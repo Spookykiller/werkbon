@@ -1,0 +1,218 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require jquery-ui
+ *= require_self
+ */
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid #eeeeee;
+}
+
+.inner_container img {
+    padding-top: 13px !important;
+    padding-left: 8px !important;
+    float: left;
+    width: 197px !important;
+    height: 51px !important;
+}
+
+.inner_container li {
+    float: right;
+    display: block;
+    color: #777;
+    font-weight: 400;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+}
+
+.inner_container li:hover {
+    color: #0063a2;
+}
+
+.inner_container li:active {
+    color: #0063a2;
+    text-decoration: underline;
+}
+
+.info_icon {
+    height: 5px;
+    width: 5px;
+}
+
+.inner_container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+th {
+    font-size: 14px;
+    color: #0063a2;
+    padding: 10px 0;
+}
+
+td {
+    height: 20px;
+    border: 1px solid #bebebe;
+}
+
+td label {
+    font-weight: bold;
+    margin-left: 20px;
+    color: #0063a2
+}
+
+td input {
+    font-size: 14px;
+}
+
+td select {
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    max-width: 250px;
+    height: 35px;
+}
+
+td.index {
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table input {
+    border: 0;
+    width: 100%;
+}
+
+table, th {
+    border: 1px solid black;
+}
+
+
+table input {
+    width: 100%;
+    max-width: 250px;
+    height: 35px;
+}
+
+#general_info {
+    margin: auto;
+    width: 50%;
+}
+
+#left {
+    float: left;
+    width: 450px;
+    margin-bottom: 50px;
+}
+
+#right {
+    float: right;
+    width: 450px;
+    margin-bottom: 50px;
+}
+
+.new_werkbon {
+    margin:0 auto;
+    margin-top: 20px;
+    display: block;
+    font-weight: bold;
+    height: 43px;
+    color: #FFFFFF;
+    background-color: #0063a2;
+    border: 0px;
+    -webkit-border-radius: 0px;
+    text-transform: none;
+    border-width: 2px;
+    padding-left: 40px;
+    padding-right: 40px;
+    text-decoration: none;
+}
+
+.new_werkbon:hover {
+    background-color: #FFFFFF;
+    border: 2px inset #0063a2;
+    color: #0063a2;
+}
+
+.edit_icon {
+    margin: 0 10px;
+    height: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+td.center {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.annuleren {
+    text-align: center;
+    font-size: 14px;
+    color: #A9A9A9;
+}
+
+.annuleren:hover {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 14px;
+    color: #A9A9A9;
+}
+
+input.col-xs-12 {
+    float:right;
+    clear:both;
+    margin: 5px 0px;
+    width: 200px;
+}
+
+.form-label-left select{
+    float:right;
+    clear:both;
+    width: 204px;
+}
+
+label.col-xs-12 {
+    color: #0063a2;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.column {
+    width: 300px;
+    margin: 0 auto;
+}
+

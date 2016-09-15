@@ -1,0 +1,59 @@
+= form_for @regel, :html => {:remote => true } do |f|
+  - if @regel.errors.any?
+    %h2
+      = pluralize(@regel.errors.count, "error")
+      zorgde ervoor dat de klant niet opgeslagen kon worden.
+    %ul
+      - @regel.errors.full_messages.each do |msg|
+        %li= msg
+  %table
+    %thead
+      %tr
+        %th= f.label :werkbon, 'Werkbon'
+        %th= f.label :article_type, 'Artikel'
+        %th= f.label :label, '(Naam label)'
+        %th Input 1
+        %th= f.label :var_1_eenheid, 'Eenheid input 1'
+        %th Input 2
+        %th= f.label :var_2_eenheid, 'Eenheid input 2'
+    %tbody
+      %tr
+        %td= f.select :werkbon, ['', 'Gordijnen/vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12'
+        %td= f.collection_select(:article_type, Article.all, :prijs, :omschrijving, :include_blank => true) 
+        %td= f.text_field :label 
+        %td
+          %input{:name => "firstname", :type => "text", :placeholder => "Laat leeg voor invulveld"}/
+        %td= f.text_field :var_1_eenheid 
+        %td
+          %input{:name => "firstname", :type => "text", :placeholder => "Laat leeg voor invulveld"}/
+        %td= f.text_field :var_2_eenheid 
+      %tr
+        %td
+        %td
+        %td
+        %td#dropdowns
+          = f.fields_for :dropdowns do |dropdown|
+            = render 'dropdown_fields', f: dropdown
+          .links
+            %label{:for => "message"}= link_to_add_association '+', f, :dropdowns, :class => 'regel'
+        %td
+        %td#dropdowns
+          = f.fields_for :second_dropdowns do |dropdown|
+            = render 'second_dropdown_fields', f: dropdown
+          .links
+            %label{:for => "message"}= link_to_add_association '+', f, :second_dropdowns, :class => 'regel'
+        %td
+  %br
+  .center
+    = f.submit 'Opslaan', :class => 'new_werkbon'
+    %br
+    = link_to 'Annuleren', regels_path, :class => 'annuleren'
+  - Leverancier.all.each do |leverancier|
+    :javascript
+      $('#regel_leverancier_name').change(function(){
+        value = $(this).val();
+        if ('#{leverancier.leverancier_label}' == value) {
+          var werkbon = '#{leverancier.leverancier_werkbon}';
+          $("#werkbon_type:hidden").val(werkbon);
+        }
+      });

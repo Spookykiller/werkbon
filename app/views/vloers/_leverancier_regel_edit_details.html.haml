@@ -1,0 +1,32 @@
+- if !f.object.var1_name.blank?
+  %tr.row
+    .field
+      %td
+        = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+      %td.label
+        = f.label :var1, f.object.var1_name
+        = f.hidden_field :var1_name
+      %td.var1
+        - Regel.all.each do |regel|
+          - Article.all.each do |article|
+            - if regel.article_type == article.prijs
+              = f.hidden_field :article_prijs, :value => article.prijs
+          - if regel.label == f.object.var1_name
+            - if regel.dropdowns.count != 0
+              = f.select(:var1, regel.dropdowns.map { |value| [  value.input, value.input ] }, {:include_blank => true})
+            - else
+              = f.text_field :var1
+              = regel.var_1_eenheid
+            %td.var2
+              - if regel.second_dropdowns.count != 0
+                = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, value.input ] }, {:include_blank => true})
+              - elsif !regel.var_2_eenheid.blank?
+                = f.text_field :var3, placeholder: "Typ hier"
+                = f.hidden_field :var3_name, :value => regel.var_2_eenheid
+                = regel.var_2_eenheid
+      %td
+        = f.number_field :prijs, :class => "item_artikel_prijs"
+      %td
+        = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+      %td
+        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"

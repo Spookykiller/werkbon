@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hoeveelheid: 9.99
+  omschrijving: MyString
+  var1: MyString
+  var2: MyString
+  var3: MyString
+  var4: MyString
+  datum: MyString
+  stoffeerder: MyString
+  uren: 9.99
+  vloer_id: 
+
+two:
+  hoeveelheid: 9.99
+  omschrijving: MyString
+  var1: MyString
+  var2: MyString
+  var3: MyString
+  var4: MyString
+  datum: MyString
+  stoffeerder: MyString
+  uren: 9.99
+  vloer_id: 

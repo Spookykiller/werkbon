@@ -1,0 +1,170 @@
+.leverancier {
+    color: #a20000;
+}
+
+.calculations label {
+    float: left;
+}
+
+#general_info.radio_buttons {
+    float: right;
+}
+
+.radio_button {
+    height: 15px;
+    float: right;
+}
+
+#bijzonderheden_area {
+    height: 150px;
+    width: 800px;
+}
+
+@media print {
+
+    body > *:not(.form-label-left) {
+        display: none;
+    }
+    
+    .center {
+        display: none;
+    }
+    
+    .links {
+        display: none;
+    }
+    
+    .actions {
+        display: none;
+    }
+    
+    #general_info {
+        width: 100%;
+    }
+    
+    #general_info input {
+        width: 200px;
+        height: 14px;
+    }
+    
+    #general_info select {
+        width: 200px;
+        height: 18px;
+    }
+    
+    #general_info label {
+        width: 200px;
+        height: 18px;
+        line-height: 30px;
+    }
+    
+    #general_info.radio_buttons {
+        float: right;
+    }
+    
+    #general_info input[type="radio"] {
+        width: 80px;
+    }
+    
+        
+    #left {
+        width: 320px;
+        margin: 0 0 30px 30px;
+    }
+
+    #right {
+        width: 320px;
+        margin: 0 30px 30px 0;
+    }
+    
+    .form-label-left tr {
+        page-break-inside:avoid; 
+        page-break-after:auto;
+    }
+    
+    .form-label-left input {
+        font-size: 10px;
+        width: 80px;
+        height: 15px;
+        text-align: center;
+    }
+    
+    .form-label-left select {
+        font-size: 10px;
+        width: 80px;
+        height: 15px;
+    }
+    
+    .form-label-left th {
+        font-size: 12px;
+        padding: 0 0;
+    }
+    
+    .label {
+        width: 130px;
+    }
+    
+    .label label {
+        margin-left: 5px;
+    }
+    
+    .var1 select {
+        width: 150px;
+    }
+    
+    .var2 select {
+        width: 150px;
+    }
+    
+    .var1 input {
+        width: 110px;
+    }
+    
+    .var2 input {
+        width: 110px;
+    }
+    
+    .form-label-left * {
+        visibility: visible;
+    }
+    
+    .form-label-left {
+        font-size: 10px;
+    }
+    
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        color: transparent;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: transparent;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: transparent;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: transparent;
+    }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none; /* If you want to remove the border as well */
+        background: none;
+    }
+    
+    .calculations .calculation_ruimte {
+        width: 50px;
+    }
+    
+    .calculations .calculation_breedte {
+        width: 50px;
+    }
+    
+}
+
+@page{
+    margin-left: 10mm;
+    margin-right: 10mm;
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+}

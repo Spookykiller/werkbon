@@ -1,0 +1,5 @@
+.nested-fields
+  .field
+    = f.text_field :input, placeholder: "Dropdown waarde"
+    = f.collection_select(:article_type, Article.all, :prijs, :omschrijving, :include_blank => true) 
+  %label{:for => "message"}= link_to_remove_association "X", f

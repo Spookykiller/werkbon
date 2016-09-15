@@ -1,0 +1,46 @@
+<table border="1" style="width:100%">
+      <thead>
+        <tr>
+            <th>Werkbon type</th>
+            <th>Projectnaam</th>
+            <th>Projectnummer</th>
+            <th>Oplevering</th>
+            <th>Ingevuld door</th>
+            <th>Organisatie</th>
+            <th>Acties</th>
+        </tr>
+      </thead>
+    <% @vloers.each do |vloer| %>
+      <tbody>
+          <tr>
+              <td class="index"><%= vloer.werkbon_type %></td>
+              <td class="index"><%= vloer.project_naam %></td>
+              <td class="index"><%= vloer.project_nummer %></td>
+              <td class="index"><%= vloer.oplevering %></td>
+              <td class="index"><%= vloer.werkvoorbereider %></td>
+              <td class="index">
+                    <% if vloer.organisatie == true %>
+                        T4P
+                    <% else %>
+                        T4L
+                    <% end %>
+              </td>
+              <td class="center"><%= link_to edit_vloer_path(vloer) do %>
+                  <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+              <% end %>
+              <%= link_to vloer_path(vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+                  <img src="/images/delete.png" alt="Delete" class="edit_icon">
+              <% end %>
+              <%= link_to "Duplicate", duplicate_vloer_path(vloer) %>
+              <%= link_to "Print", print_vloer_path(vloer) %>
+              </td>
+          </tr>
+      </tbody>
+    <% end %>
+</table>
+<br>
+<div>
+    <%= link_to new_vloer_path do %>
+        <button class="new_werkbon">Nieuwe werkbon +</button>
+    <% end %>
+</div>

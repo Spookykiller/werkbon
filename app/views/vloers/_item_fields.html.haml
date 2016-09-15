@@ -1,0 +1,29 @@
+- if regel.leverancier_name.blank?
+  %tr.row
+    .field
+      = f.hidden_field :article_prijs, :value => regel.article_type
+      %td
+        = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+      %td
+        = f.label :var1, regel.label
+        = f.hidden_field :var1_name, :value => regel.label
+      %td
+        - if regel.dropdowns.count != 0
+          = f.select(:var1, regel.dropdowns.map { |value| [ value.input, value.article_type ] }, {:include_blank => true})
+        - else
+          = f.text_field :var1, placeholder: "Typ hier"
+          = regel.var_1_eenheid
+      %td
+        - if regel.second_dropdowns.count != 0
+          = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, value.article_type ] }, {:include_blank => true})
+        - elsif regel.var_2_eenheid != '' || nil
+          = f.text_field :var3, placeholder: "Typ hier"
+          = f.hidden_field :var3_name, :value => regel.var_2_eenheid
+          = regel.var_2_eenheid
+      %td
+        = f.number_field :prijs, :value => regel.article_type, :class => "item_artikel_prijs"
+      %td
+        = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+      %td
+        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"
+        = f.hidden_field :werkbon_type, :id => "item_werkbon_type", :value => regel.werkbon

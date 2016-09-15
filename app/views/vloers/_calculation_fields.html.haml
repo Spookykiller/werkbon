@@ -1,0 +1,52 @@
+%tr.row.nested-fields  
+  .leverancier_loop
+    .field
+      %td.gordijnen_raam
+        = f.number_field :ruimte, :class => "calculation_ruimte"
+        = f.hidden_field :werkbon
+      %td.gordijnen_raam
+        = f.number_field :breedte, :class => "calculation_breedte"
+        x
+        = f.number_field :hoogte, :class => "calculation_ruimte"
+        cm
+      %td.gordijnen
+        = f.label :stuks, "stuk L-R", :value => "true"
+        = f.radio_button :stuks, true, :class => "radio_button"
+        = f.label :stuks, "stel", :value => "false"
+        = f.radio_button :stuks, false, :class => "radio_button"
+      %td.gordijnen
+        = f.label :bed, "L", :value => "true"
+        = f.radio_button :bed, true, :class => "radio_button"
+        = f.label :bed, "R", :value => "false"
+        = f.radio_button :bed, false, :class => "radio_button"
+      %td.gordijnen
+        = f.label :voeren, "Ja", :value => "true"
+        = f.radio_button :voeren, true, :class => "radio_button"
+        = f.label :voeren, "Nee", :value => "false"
+        = f.radio_button :voeren, false, :class => "radio_button"
+      %td.gordijnen
+        = f.number_field :hoofdje
+        cm
+      %td.raam
+        = f.label :bediening, "Links", :value => "true"
+        = f.radio_button :bediening, true, :class => "radio_button"
+        = f.label :bediening, "Rechts", :value => "false"
+        = f.radio_button :bediening, false, :class => "radio_button"
+      %td.raam
+        = f.text_field :type
+      %td.raam
+        = f.label :uitlijnen, "Ja", :value => "true"
+        = f.radio_button :uitlijnen, true, :class => "radio_button"
+        = f.label :uitlijnen, "Nee", :value => "false"
+        = f.radio_button :uitlijnen, false, :class => "radio_button"
+      %td.gordijnen_raam
+        = f.label :bmdm, "BM", :value => "true"
+        = f.radio_button :bmdm, true, :class => "radio_button"
+        = f.label :bmdm, "DM", :value => "false"
+        = f.radio_button :bmdm, false, :class => "radio_button"
+      %td.actions
+        = link_to_remove_association "Verwijder", f
+
+
+
+            

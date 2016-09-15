@@ -1,0 +1,47 @@
+<table border="1" style="width:100%">
+      <thead>
+        <tr>
+            <th>Label</th>
+            <th>Leverancier</th>
+            <th>Doorberekenbare prijs</th>
+            <th>Werkbon type</th>
+            <th>Acties</th>
+        </tr>
+      </thead>
+    <% @regels.each do |regel| %>
+      <tbody>
+          <tr>
+            <td class="index"><%= regel.label %></td>
+            <td class="index"><%= regel.leverancier_name %></td>
+            <% if regel.article_type != '' || nil %>
+              <td class="index">
+                € <%= regel.article_type %>
+              </td>
+            <% else %>
+            <td class="index">
+              Geen prijs
+            </td>
+            <% end %>
+            <td class="index"><%= regel.werkbon %></td>
+            <td class="center">
+              <%= link_to edit_regel_path(regel) do %>
+                <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+              <% end %>
+              <%= link_to regel_path(regel), method: :delete, data: { confirm: "Weet je zeker dat je deze regel wilt verwijderen" } do %>
+                <img src="/images/delete.png" alt="Delete" class="edit_icon">
+              <% end %>
+              <%= link_to "Duplicate", duplicate_regel_path(regel) %>
+            </td>
+          </tr>
+      </tbody>
+    <% end %>
+</table>
+<br>
+<div>
+    <%= link_to new_regel_path do %>
+        <button class="new_werkbon">Nieuwe leveranciers regel +</button>
+    <% end %>
+    <%= link_to regels_new_blanko_path do %>
+        <button class="new_werkbon">Nieuwe losse regel +</button>
+    <% end %>
+</div>

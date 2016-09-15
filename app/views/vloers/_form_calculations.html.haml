@@ -1,0 +1,20 @@
+%table
+  %thead
+    %tr
+      %th.gordijnen_raam ruimte/aantal
+      %th.gordijnen_raam breedte x hoogte
+      %th.gordijnen stuk L-R/stel
+      %th.gordijnen bediening
+      %th.gordijnen voeren
+      %th.gordijnen hoofdje
+      %th.raam bediening
+      %th.raam type
+      %th.raam uitlijnen
+      %th.gordijnen_raam BM/DM
+      %th.actions verwijder
+  %tbody.calculations
+.links
+  = link_to_add_association 'Voeg berekening toe', f, :calculations,
+  'data-association-insertion-method' => 'append',
+  'data-association-insertion-node' => 'tbody.calculations', :class => 'add_calculation'
+

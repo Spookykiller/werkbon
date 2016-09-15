@@ -1,0 +1,31 @@
+<table border="1" style="width:100%">
+      <thead>
+        <tr>
+            <th>Label</th>
+            <th>Werkbon</th>
+            <th>Acties</th>
+        </tr>
+      </thead>
+    <% @leveranciers.each do |leverancier| %>
+      <tbody>
+          <tr>
+            <td class="index"><%= leverancier.leverancier_label %></td>
+            <td class="index"><%= leverancier.leverancier_werkbon %></td>
+            <td class="center">
+                <%= link_to edit_leverancier_path(leverancier) do %>
+                  <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+                <% end %>
+                <%= link_to leverancier_path(leverancier), method: :delete, data: { confirm: "Weet je zeker dat je deze leverancier wilt verwijderen" } do %>
+                  <img src="/images/delete.png" alt="Delete" class="edit_icon">
+                <% end %>
+            </td>
+          </tr>
+      </tbody>
+    <% end %>
+</table>
+<br>
+<div>
+    <%= link_to new_leverancier_path do %>
+        <button class="new_werkbon">Nieuwe leverancier +</button>
+    <% end %>
+</div>

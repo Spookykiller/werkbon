@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  omschrijving: MyString
+  prijs: 9.99
+  eenheid: MyString
+
+two:
+  omschrijving: MyString
+  prijs: 9.99
+  eenheid: MyString

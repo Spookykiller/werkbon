@@ -1,0 +1,12 @@
+<div class="center">
+    <h3>Edit regel</h3>
+</div>
+
+<br>
+<br>
+
+<% if @regel.leverancier_name.blank? %>
+    <%= render 'form_blank' %>
+<% else%>
+    <%= render 'form' %>
+<% end %>

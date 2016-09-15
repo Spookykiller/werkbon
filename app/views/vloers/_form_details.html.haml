@@ -1,0 +1,5 @@
+#tasks
+  = f.fields_for :items do |item|
+    - Regel.all.each do |regel|
+      - if regel.leverancier_name == ''
+        = render 'item_fields', f: item

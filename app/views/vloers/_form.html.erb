@@ -1,0 +1,88 @@
+<%= form_for @vloer, :html => {:class =>  'form-horizontal form-label-left', :remote => true } do |f| %>
+    <% if @vloer.errors.any? %>
+        <h2><%= pluralize(@vloer.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h2>
+        <ul>
+            <% @vloer.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <div id="general_info">
+        <div id="left">
+            <%= f.label :werkbon_type, 'Werkbon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.select :werkbon_type, ['', 'Gordijnen/vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12', id: 'werkbon_type' %><br>
+        
+            <%= f.label :project_naam, 'Projectnaam', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :project_naam, class: 'form-control col-md-7 col-xs-12' %><br>
+
+            <%= f.label :project_nummer, 'Projectnummer', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :project_nummer, class: 'form-control col-md-7 col-xs-12' %><br>
+
+            <%= f.label :naam, 'Naam klant', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :naam, class: 'form-control col-md-7 col-xs-12' %><br>
+
+            <%= f.label :AdressLine1, 'Adres', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :AdressLine1, class: 'form-control col-md-7 col-xs-12' %><br>
+            <%= f.text_field :AdressLine3, class: 'form-control col-md-7 col-xs-12' %><br>
+            <%= f.text_field :AdressLine4, class: 'form-control col-md-7 col-xs-12' %><br>
+            <br>
+            <br>
+            
+            <%= f.label :telefoon, 'Telefoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :telefoon, class: 'form-control col-md-7 col-xs-12' %>
+        </div>
+        
+        <div id="right">
+            <%= f.label :email, 'E-mail', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12' %><br>
+            
+            <%= f.label :organisatie, 'Organisatie', class: 'control-label col-md-3 col-sm-3 col-xs-12' %><br>
+            <%= f.label :organisatie, "T4P", :value => "true"  %>
+            <%= f.radio_button :organisatie, true %>
+            <%= f.label :organisatie, "T4L", :value => "false" %>
+            <%= f.radio_button :organisatie, false %><br>
+            
+            <%= f.label :contactpersoon, 'Contactpersoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :contactpersoon, class: 'form-control col-md-7 col-xs-12' %><br>
+
+            <%= f.label :datum, 'Datum', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :datum, class: 'form-control col-md-7 col-xs-12', :value => Date.today.strftime('%d/%m/%Y'), id: 'datepicker' %><br>
+
+            <%= f.label :werkvoorbereider, 'Ingevuld door', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :werkvoorbereider, class: 'form-control col-md-7 col-xs-12', :value => current_user.fullname %><br>
+            
+            <%= f.label :oplevering, 'Oplevering', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :oplevering, class: 'form-control col-md-7 col-xs-12', id: 'datepicker1' %><br>
+            
+            <%= f.label :ordernummer, 'Ons ordernummer', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :ordernummer, class: 'form-control col-md-7 col-xs-12' %><br>
+            
+            <%= f.label :totale_prijs, 'Totaal bedrag', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs' %>
+            
+        </div>
+    </div>
+    <br>
+    
+    <%= render partial: 'form_new_details', locals: { f: f } %>
+    
+    <br>
+    
+    <div class="calculation">
+        <%= render partial: 'form_calculations', locals: { f: f } %>
+    </div>
+    
+    <br>
+    
+    <%= f.label :bijzonderheden, 'Bijzonderheden', class: 'control-label col-md-3 col-sm-3 col-xs-12' %><br>
+    <%= f.text_area :bijzonderheden, :id => "bijzonderheden_area" %>
+    
+    <br>
+    
+    <div class="center">
+        <%= f.submit 'Opslaan', :class => 'new_werkbon' %>
+        <br>
+        <%= link_to 'Annuleren', vloers_path, :class => 'annuleren' %>
+    </div>
+    
+<% end %>

@@ -1,0 +1,23 @@
+- if !f.object.var2_name.blank?
+  %tr.row
+    .leverancier_loop
+      .field
+        %td
+          = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+        %td.label
+          = f.label :var2, f.object.var2_name, :class => "leverancier"
+          = f.hidden_field :var2_name
+        %td.var1
+          - Leverancier.all.each do |leverancier|
+            - if leverancier.leverancier_label == f.object.var2_name
+              - if leverancier.leverancier_regels.count > 0
+                = f.select(:var2, leverancier.leverancier_regels.map { |value| [ value.input, value.input ] }, {:include_blank => true})
+              - else
+                = f.text_field :var2
+        %td.var2
+        %td
+          = f.number_field :prijs, :class => "item_artikel_prijs"
+        %td
+          = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+        %td
+          = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"

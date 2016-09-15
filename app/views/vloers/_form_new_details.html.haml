@@ -1,0 +1,24 @@
+%table
+  %thead
+    %tr
+      %th Hoeveelheid
+      %th Label
+      %th{:colspan => "2"} Invulvelden
+      %th Prijs
+      %th Totaal prijs
+      %th Totaal arbeid
+  %tbody.list
+.links
+  - Leverancier.all.each do |leverancier|
+    = link_to_add_association 'Voeg item toe', f, :items, render_options: {locals: { leverancier: leverancier }}, :class => "add_items", partial: 'leverancier_details',
+      'data-association-insertion-method' => 'append',
+      'data-association-insertion-node' => 'tbody.list'
+    - Regel.all.each do |regel|
+      - if regel.leverancier_name == leverancier.leverancier_label
+        = link_to_add_association 'Voeg item toe', f, :items, render_options: {locals: { regel: regel, leverancier: leverancier }}, :class => "add_items", partial: 'leverancier_regel_details',
+      'data-association-insertion-method' => 'append',
+      'data-association-insertion-node' => 'tbody.list'
+  - Regel.all.each do |regel|
+    = link_to_add_association 'Voeg item toe', f, :items, render_options: {locals: { regel: regel }}, :class => "add_items", partial: 'item_fields',
+    'data-association-insertion-method' => 'append',
+    'data-association-insertion-node' => 'tbody.list'

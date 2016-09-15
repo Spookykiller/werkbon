@@ -1,0 +1,2 @@
+module RegelsHelper
+end
