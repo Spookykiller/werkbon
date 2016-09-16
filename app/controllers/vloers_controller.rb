@@ -65,7 +65,7 @@ class VloersController < ApplicationController
     private
     
     def vloer_params
-        params.require(:vloer).permit(:naam, :project_nummer, :project_naam, :AdressLine1, :AdressLine3, :AdressLine4, :telefoon, :email, :organisatie, :contactpersoon, :datum, :werkvoorbereider, :oplevering, :ordernummer, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :breedte, :hoogte, :stuks, :bed, :voeren, :hoofdje, :bediening, :type, :uitlijnen, :bmdm, :_destroy] )
+        params.require(:vloer).permit(:naam, :project_nummer, :project_naam, :AdressLine1, :AdressLine3, :AdressLine4, :telefoon, :email, :organisatie, :contactpersoon, :datum, :werkvoorbereider, :oplevering, :ordernummer, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :voorraad_actie, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :breedte, :hoogte, :stuks, :bed, :voeren, :hoofdje, :bediening, :type, :uitlijnen, :bmdm, :_destroy] )
     end
     
     def find_vloer

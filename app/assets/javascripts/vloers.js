@@ -1,8 +1,10 @@
 $(document).on('turbolinks:load', function() {
-        
+    selected_values();
+    
     $('input').click(function(){
 	    $(this).select();
         update_subtotal();
+        selected_values();
     });
     
     $("input:radio[name=printstyle]").click(function() {
@@ -16,14 +18,6 @@ $(document).on('turbolinks:load', function() {
             $('.item_totaal_prijs').css('color', 'black');
             $('.item_totaal_arbeid').css('color', 'black');
         }
-    });
-    
-    $('select').change(function(){
-        price = Number($('option:selected', this).attr('value'));
-        price2 = $(this).closest('option:selected', this).attr('value');
-        
-        row = $(this).closest('tr.row');
-        row.find('.item_artikel_prijs').val(Number(price).toFixed(2));
     });
     
     $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
@@ -62,16 +56,32 @@ $(document).on('turbolinks:load', function() {
 
 });
 
+function selected_values() {
+    var price = 0;
+    $('select').change(function(){
+        var row = $(this).closest('tr.row');
+        
+        $(row).find('select').each(function(x){
+            price = price + Number($('option:selected', this).attr('value'));
+        });
+        $(row).find('.item_artikel_prijs').val(Number(price).toFixed(2));
+        price = 0;
+    });
+}
+
 function update_subtotal() {
     
     var subtotal = 0;
+    var price = 0;
     $('.row:visible').each(function(i){
         var prijs = Number($(this).find('.item_artikel_prijs').val());
         var hoeveelheid = Number($(this).find('.item_hoeveelheid').val());
+        
         var totaal_prijs = Number(hoeveelheid) * Number(prijs);
         $(this).find('.item_totaal_prijs').val(totaal_prijs.toFixed(2));
         subtotal += totaal_prijs;
     });
+    
     console.log(subtotal);
     $('#werkbon_totale_prijs').val(subtotal.toFixed(2));
     
@@ -118,8 +128,8 @@ function getSibDatDebtor(obj2, key, value, ukKeys) {
 function getWerkbonType() {
     
     $('#vloer_werkbon_type').change(function(){
-        value = $(this).val()
-        item = $('#item_werkbon_type').val();
+        var value = $(this).val()
+        var item = $('#item_werkbon_type').val();
         
         $('tr.row').each(function () {
             item = $(this).find('#item_werkbon_type').val();
@@ -155,7 +165,7 @@ function getWerkbonType() {
 }
 
 function getWerkbonTypeAfter() {
-    value = $('#vloer_werkbon_type').val();
+    var value = $('#vloer_werkbon_type').val();
     
     if (value == "Vloeren") {
         $('.calculation').hide();

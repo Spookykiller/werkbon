@@ -20,6 +20,10 @@
     width: 800px;
 }
 
+.item_voorraad_actie {
+    width: 80px;    
+}
+
 @media print {
 
     body > *:not(.form-label-left) {
@@ -160,6 +164,9 @@
         width: 50px;
     }
     
+    .item_voorraad_actie {
+        width: 40px !important;    
+    }
 }
 
 @page{

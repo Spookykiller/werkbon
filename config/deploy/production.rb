@@ -21,8 +21,6 @@ role :app, %w{t4pwerkbon@gary.bluerail.nl}
 role :web, %w{t4pwerkbon@gary.bluerail.nl}
 role :db,  %w{t4pwerkbon@gary.bluerail.nl}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb

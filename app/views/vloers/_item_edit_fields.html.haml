@@ -3,6 +3,8 @@
     .field
       = f.hidden_field :article_prijs, :value => regel.article_type
       %td
+        = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
+      %td
         = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
       %td
         = f.label :var1, f.object.var1_name

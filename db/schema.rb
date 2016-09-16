@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913070348) do
+ActiveRecord::Schema.define(version: 20160915150059) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "omschrijving"
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20160913070348) do
     t.decimal  "totale_arbeid"
     t.string   "werkbon_type"
     t.integer  "vloer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "voorraad_actie"
   end
 
   add_index "items", ["vloer_id"], name: "index_items_on_vloer_id"
