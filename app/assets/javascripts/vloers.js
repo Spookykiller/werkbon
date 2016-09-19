@@ -35,15 +35,18 @@ $(document).on('turbolinks:load', function() {
         update_subtotal();
     });
     
+    // Project naam & project nummer
     $.get( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
-
         var arr = data;
         var lang = [];
+        var project_nummer = [];
         var obj = JSON.parse(arr);
         $.each(obj, function() {
             lang.push(this['Description'])
+            project_nummer.push(this['ProjectId'])
         });
-
+        
+        // Project naam
         $("#vloer_project_naam").autocomplete({
             source: lang,
             select: function(event, ui) {
@@ -51,7 +54,58 @@ $(document).on('turbolinks:load', function() {
                 getSibDat(obj, 'Description', item_value, ['ProjectGroup', 'CheckedOut', 'DebtorId', 'ProjectId']);
             }
         });
+        
+        // Project nummer
+        $("#vloer_project_nummer").autocomplete({
+            source: project_nummer,
+            select: function(event, ui) {
+                var item_value = (ui.item.value);
+                getSibDatId(obj, 'ProjectId', item_value, ['ProjectGroup', 'CheckedOut', 'DebtorId', 'Description']);
+            }
+        });
                 
+    }).fail(function() {
+        alert('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
+    });
+    
+    
+    // Leverancier
+    $.get( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
+        var arr = data;
+        var lang = [];
+        var obj = JSON.parse(arr);
+        $.each(obj, function() {
+            lang.push(this['CreditorName'])
+        });
+
+        $(".leverancier_input").autocomplete({
+            source: lang
+        });
+                
+    }).fail(function() {
+        alert('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
+    });
+    
+    
+    // Naam klant
+    $.get( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+        var arr = data2;
+        var lang = [];
+        var obj = JSON.parse(arr);
+        $.each(obj, function() {
+            lang.push(this['DebtorName'])
+        });
+
+        $("#vloer_naam").autocomplete({
+            source: lang,
+            select: function(event, ui) {
+                var item_value = (ui.item.value);
+                getSibDatKlant(obj, 'DebtorName', item_value, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorId', 'Email', 'TelNr']);
+            }
+        });
+                
+    }).fail(function() {
+        alert('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
     });
 
 });
@@ -82,7 +136,6 @@ function update_subtotal() {
         subtotal += totaal_prijs;
     });
     
-    console.log(subtotal);
     $('#werkbon_totale_prijs').val(subtotal.toFixed(2));
     
 }
@@ -105,6 +158,49 @@ function getSibDat(obj, key, value, ukKeys) {
     }
 }
 
+function getSibDatId(obj, key, value, ukKeys) {
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i][key] == value) {
+            var dat = [];
+            for (var x = 0; x < ukKeys.length; x++) {
+                dat.push(obj[i][ukKeys[x]]);
+            }
+            var DebtorId = (dat[2]);
+            $("#vloer_project_naam").val(dat[3]);
+            
+            $.get( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+                var obj2 = JSON.parse(data2);
+                getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr']);
+            });
+        }
+    }
+}
+
+function getSibDatKlant(obj, key, value, ukKeys) {
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i][key] == value) {
+            var dat2 = [];
+            for (var x = 0; x < ukKeys.length; x++) {
+                dat2.push(obj[i][ukKeys[x]]);
+            }
+            if (dat2[3] == null) {
+                dat2[3] = "Nederland";
+            }
+            var DebtorId = (dat2[4]);
+            $("#vloer_AdressLine1").val(dat2[1]);
+            $("#vloer_AdressLine3").val(dat2[2]);
+            $("#vloer_AdressLine4").val(dat2[3]);
+            $("#vloer_email").val(dat2[5]);
+            $("#vloer_telefoon").val(dat2[6]);
+
+            $.get( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
+                var obj = JSON.parse(data);
+                getSibDatKlantInfo(obj, 'DebtorId', DebtorId, ['ProjectId', 'Description']);
+            });
+        }
+    }
+}
+
 function getSibDatDebtor(obj2, key, value, ukKeys) {
     for (var i = 0; i < obj2.length; i++) {
         if (obj2[i][key] == value) {
@@ -121,6 +217,19 @@ function getSibDatDebtor(obj2, key, value, ukKeys) {
             $("#vloer_naam").val(dat2[4]);
             $("#vloer_email").val(dat2[5]);
             $("#vloer_telefoon").val(dat2[6]);
+        }
+    }
+}
+
+function getSibDatKlantInfo(obj, key, value, ukKeys) {
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i][key] == value) {
+            var dat = [];
+            for (var x = 0; x < ukKeys.length; x++) {
+                dat.push(obj[i][ukKeys[x]]);
+            }
+            $("#vloer_project_nummer").val(dat[0]);
+            $("#vloer_project_naam").val(dat[1]);
         }
     }
 }

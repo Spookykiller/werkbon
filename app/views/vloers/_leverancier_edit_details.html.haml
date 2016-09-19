@@ -15,7 +15,7 @@
               - if leverancier.leverancier_regels.count > 0
                 = f.select(:var2, leverancier.leverancier_regels.map { |value| [ value.input, value.input ] }, {:include_blank => true})
               - else
-                = f.text_field :var2
+                = f.text_field :var2, :class => "leverancier_input"
         %td.var2
         %td
           = f.number_field :prijs, :class => "item_artikel_prijs"

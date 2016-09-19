@@ -9,10 +9,10 @@
         = f.label :var2, leverancier.leverancier_label, :class => "leverancier"
       %td.var1
         = f.hidden_field :var2_name, :value => leverancier.leverancier_label
-        - if leverancier.leverancier_regels.count != 0
+        - if leverancier.leverancier_regels.count > 0
           = f.select(:var2, leverancier.leverancier_regels.map { |value| [ value.input, value.input ] }, {:include_blank => true})
         - else
-          = f.text_field :var2, placeholder: "Typ hier"
+          = f.text_field :var2, placeholder: "Typ hier", :class => "leverancier_input"
       %td.var2
       %td
         = f.number_field :prijs, :class => "item_artikel_prijs"
