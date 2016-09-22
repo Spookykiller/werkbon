@@ -37,10 +37,18 @@
             <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12' %><br>
             
             <%= f.label :organisatie, 'Organisatie', class: 'control-label col-md-3 col-sm-3 col-xs-12' %><br>
-            <%= f.label :organisatie, "T4P", :value => "true"  %>
-            <%= f.radio_button :organisatie, true %>
-            <%= f.label :organisatie, "T4L", :value => "false" %>
-            <%= f.radio_button :organisatie, false %><br>
+            <%= f.label :organisatie, "T4P", :value => "1"  %>
+            <%= f.radio_button :organisatie, 1 %> /
+            <%= f.label :organisatie, "T4L WW", :value => "2" %>
+            <%= f.radio_button :organisatie, 2 %> /
+            <%= f.label :organisatie, "T4L A'F", :value => "3" %>
+            <%= f.radio_button :organisatie, 3 %> /
+            <%= f.label :organisatie, "T4L A'dam", :value => "4" %>
+            <%= f.radio_button :organisatie, 4 %> /
+            <%= f.label :organisatie, "T4L Breda", :value => "5" %>
+            <%= f.radio_button :organisatie, 5 %> /
+            
+            <br>
             
             <%= f.label :contactpersoon, 'Contactpersoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :contactpersoon, class: 'form-control col-md-7 col-xs-12' %><br>

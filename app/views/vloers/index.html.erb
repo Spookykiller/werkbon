@@ -19,10 +19,16 @@
               <td class="index"><%= vloer.oplevering %></td>
               <td class="index"><%= vloer.werkvoorbereider %></td>
               <td class="index">
-                    <% if vloer.organisatie == true %>
+                    <% if vloer.organisatie == 1 %>
                         T4P
-                    <% else %>
-                        T4L
+                    <% elsif vloer.organisatie == 2 %>
+                        T4L WW
+                    <% elsif vloer.organisatie == 3 %>
+                        T4L A'F
+                    <% elsif vloer.organisatie == 4 %>
+                        T4L A'dam
+                    <% elsif vloer.organisatie == 5 %>
+                        T4L Breda
                     <% end %>
               </td>
               <td class="center"><%= link_to edit_vloer_path(vloer) do %>

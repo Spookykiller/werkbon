@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915150059) do
+ActiveRecord::Schema.define(version: 20160922182408) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "omschrijving"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20160915150059) do
     t.string   "AdressLine4"
     t.string   "telefoon"
     t.string   "email"
-    t.boolean  "organisatie"
+    t.integer  "organisatie"
     t.string   "contactpersoon"
     t.string   "datum"
     t.string   "werkvoorbereider"
