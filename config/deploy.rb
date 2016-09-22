@@ -36,6 +36,8 @@ set :rvm_ruby_version, '2.3.0'
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
+set :linked_files, fetch(:linked_files, []).push('db/production.sqlite3')
+
 set :rvm_type, :system                     # Defaults to: :auto
 
 # Default value for keep_releases is 5
