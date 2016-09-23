@@ -5,7 +5,7 @@
         %td
           = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
         %td
-          = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+          = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
         %td.label
           = f.label :var2, f.object.var2_name, :class => "leverancier"
           = f.hidden_field :var2_name
@@ -18,8 +18,8 @@
                 = f.text_field :var2, :class => "leverancier_input"
         %td.var2
         %td
-          = f.number_field :prijs, :class => "item_artikel_prijs"
+          = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
         %td
-          = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+          = f.number_field :totale_prijs, :class => "item_totaal_prijs", :step => '0.01'
         %td
-          = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"
+          = f.number_field :totale_arbeid, :class => "item_totaal_arbeid", :step => '0.01'

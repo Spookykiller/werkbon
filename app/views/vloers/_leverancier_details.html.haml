@@ -4,7 +4,7 @@
       %td
         = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
       %td
-        = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+        = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
       %td.label
         = f.label :var2, leverancier.leverancier_label, :class => "leverancier"
       %td.var1
@@ -12,12 +12,12 @@
         - if leverancier.leverancier_regels.count > 0
           = f.select(:var2, leverancier.leverancier_regels.map { |value| [ value.input, value.input ] }, {:include_blank => true})
         - else
-          = f.text_field :var2, placeholder: "Typ hier", :class => "leverancier_input"
+          = f.text_field :var2, placeholder: "Type hier", :class => "leverancier_input"
       %td.var2
       %td
-        = f.number_field :prijs, :class => "item_artikel_prijs"
+        = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
       %td
-        = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+        = f.number_field :totale_prijs, :class => "item_totaal_prijs", :step => '0.01'
       %td
-        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"
+        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid", :step => '0.01'
         = f.hidden_field :werkbon_type, :id => "item_werkbon_type", :value => leverancier.leverancier_werkbon

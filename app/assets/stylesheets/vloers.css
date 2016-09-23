@@ -1,5 +1,6 @@
 .leverancier {
     color: #a20000;
+    font-size: 14px;
 }
 
 .calculations label {
@@ -24,10 +25,22 @@
     width: 80px;    
 }
 
+.item_artikel_prijs, .item_totaal_prijs {
+    text-align: right;
+}
+
+label.col-xs-12 {
+    font-size: 14px;
+}
+
 @media print {
 
     body > *:not(.form-label-left) {
         display: none;
+    }
+    
+    label {
+        font-size: 10px;
     }
     
     .center {
@@ -60,6 +73,7 @@
         width: 200px;
         height: 18px;
         line-height: 30px;
+        font-size: 10px;
     }
     
     #general_info.radio_buttons {
@@ -90,7 +104,6 @@
         font-size: 10px;
         width: 80px;
         height: 15px;
-        text-align: center;
     }
     
     .form-label-left select {
@@ -100,7 +113,7 @@
     }
     
     .form-label-left th {
-        font-size: 12px;
+        font-size: 10px;
         padding: 0 0;
     }
     
@@ -160,13 +173,40 @@
         width: 50px;
     }
     
+    .calculations .calculation_ruimte label {
+        width: 50px;
+    }
+    
     .calculations .calculation_breedte {
         width: 50px;
     }
     
+    .calculations .calculation_breedte label {
+        width: 50px;
+    }
+    
+    .calculations input {
+        font-size: 10px;
+        width: 30px;
+        height: 10px;
+    }
+
     .item_voorraad_actie {
         width: 40px !important;    
     }
+    
+    .item_artikel_prijs, .item_totaal_prijs {
+        text-align: right;
+    }
+    
+    .leverancier {
+        font-size: 10px;
+    }
+    
+    td label {
+        font-size: 10px;
+    }
+    
 }
 
 @page{

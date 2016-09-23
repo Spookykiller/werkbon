@@ -5,7 +5,7 @@
       %td
         = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
       %td
-        = f.text_field :hoeveelheid, :class => "item_hoeveelheid"
+        = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
       %td
         = f.label :var1, f.object.var1_name
         = f.hidden_field :var1_name
@@ -21,15 +21,15 @@
               - if regel.second_dropdowns.count != 0
                 = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, value.article_type ] }, {:include_blank => true})
               - elsif regel.var_2_eenheid != '' || nil
-                = f.text_field :var3, placeholder: "Typ hier"
+                = f.text_field :var3, placeholder: "Type hier"
                 = f.hidden_field :var3_name, :value => regel.var_2_eenheid
                 = regel.var_2_eenheid
             - Article.all.each do |article|
               - if regel.article_type == article.prijs
                 = f.hidden_field :article_prijs, :value => article.prijs
       %td
-        = f.number_field :prijs, :class => "item_artikel_prijs"
+        = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
       %td
-        = f.number_field :totale_prijs, :class => "item_totaal_prijs"
+        = f.number_field :totale_prijs, :class => "item_totaal_prijs", :step => '0.01'
       %td
-        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid"
+        = f.number_field :totale_arbeid, :class => "item_totaal_arbeid", :step => '0.01'

@@ -36,17 +36,8 @@
             <%= f.label :email, 'E-mail', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12' %><br>
             
-            <%= f.label :organisatie, 'Organisatie', class: 'control-label col-md-3 col-sm-3 col-xs-12' %><br>
-            <%= f.label :organisatie, "T4P", :value => "1"  %>
-            <%= f.radio_button :organisatie, 1 %> /
-            <%= f.label :organisatie, "T4L WW", :value => "2" %>
-            <%= f.radio_button :organisatie, 2 %> /
-            <%= f.label :organisatie, "T4L A'F", :value => "3" %>
-            <%= f.radio_button :organisatie, 3 %> /
-            <%= f.label :organisatie, "T4L A'dam", :value => "4" %>
-            <%= f.radio_button :organisatie, 4 %> /
-            <%= f.label :organisatie, "T4L Breda", :value => "5" %>
-            <%= f.radio_button :organisatie, 5 %> /
+            <%= f.label :organisatie, 'Organisatie', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.select(:organisatie,{ "T4P" => 1, "T4L WW" => 2, "T4L A'F" => 3, "T4L A'dam" => 4, "T4L Breda" => 5}) %>
             
             <br>
             
@@ -66,7 +57,7 @@
             <%= f.text_field :ordernummer, class: 'form-control col-md-7 col-xs-12' %><br>
             
             <%= f.label :totale_prijs, 'Totaal bedrag', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs' %>
+            <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs', :step => '0.01' %>
             
         </div>
     </div>

@@ -81,7 +81,8 @@ td {
 td label {
     font-weight: bold;
     margin-left: 20px;
-    color: #0063a2
+    color: #0063a2;
+    font-size: 14px;
 }
 
 td input {
@@ -121,6 +122,7 @@ table input {
     width: 100%;
     max-width: 250px;
     height: 35px;
+    font-size: 14px;
 }
 
 #general_info {
@@ -197,6 +199,7 @@ input.col-xs-12 {
     clear:both;
     margin: 5px 0px;
     width: 200px;
+    font-size: 14px;
 }
 
 .form-label-left select{
