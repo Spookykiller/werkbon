@@ -7,6 +7,10 @@ $(document).on('turbolinks:load', function() {
         selected_values();
     });
     
+    update_subtotal();
+    selected_values();
+
+    
     $("input:radio[name=printstyle]").click(function() {
         var value = $(this).val();
         if (value == 'geel') {
@@ -133,7 +137,8 @@ function update_subtotal() {
         
         var totaal_prijs = Number(hoeveelheid) * Number(prijs);
         $(this).find('.item_totaal_prijs').val(totaal_prijs.toFixed(2));
-        subtotal += totaal_prijs;
+        
+        if (!isNaN(totaal_prijs)) subtotal += Number(totaal_prijs);
     });
     
     $('#werkbon_totale_prijs').val(subtotal.toFixed(2));

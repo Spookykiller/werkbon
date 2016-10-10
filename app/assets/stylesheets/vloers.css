@@ -26,7 +26,7 @@
 }
 
 .item_artikel_prijs, .item_totaal_prijs {
-    text-align: right;
+    text-align: left;
 }
 
 label.col-xs-12 {
@@ -41,6 +41,10 @@ label.col-xs-12 {
     
     label {
         font-size: 10px;
+    }
+    
+    table input {
+        text-align: center;
     }
     
     .center {
@@ -196,7 +200,7 @@ label.col-xs-12 {
     }
     
     .item_artikel_prijs, .item_totaal_prijs {
-        text-align: right;
+        text-align: center;
     }
     
     .leverancier {
