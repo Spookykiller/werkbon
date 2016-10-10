@@ -9,7 +9,6 @@ $(document).on('turbolinks:load', function() {
     
     update_subtotal();
     selected_values();
-
     
     $("input:radio[name=printstyle]").click(function() {
         var value = $(this).val();

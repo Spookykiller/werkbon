@@ -23,7 +23,7 @@
               - if regel.second_dropdowns.count != 0
                 = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, value.input ] }, {:include_blank => true})
               - elsif !regel.var_2_eenheid.blank?
-                = f.text_field :var3, placeholder: "Type hier"
+                = f.text_field :var3
                 = f.hidden_field :var3_name, :value => regel.var_2_eenheid
                 = regel.var_2_eenheid
       %td
