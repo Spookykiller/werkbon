@@ -1,3 +1,11 @@
+$(document).ajaxSend(function(event, request, settings) {
+  if (typeof(AUTH_TOKEN) == "undefined") return;
+  // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
+  settings.data = settings.data || "";
+  request = "test";
+  settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+});
+
 $(document).on('turbolinks:load', function() {
     selected_values();
     
@@ -37,9 +45,9 @@ $(document).on('turbolinks:load', function() {
         getWerkbonTypeAfter();
         update_subtotal();
     });
-    
+
     // Project naam & project nummer
-    $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
+    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
         var arr = data;
         var lang = [];
         var project_nummer = [];
@@ -67,13 +75,14 @@ $(document).on('turbolinks:load', function() {
             }
         });
                 
-    }).fail(function() {
+    }).fail(function(fail) {
         alert('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
+        alert(fail);
     });
     
-    
     // Leverancier
-    $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
+    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
+        
         var arr = data;
         var lang = [];
         var obj = JSON.parse(arr);
@@ -91,7 +100,7 @@ $(document).on('turbolinks:load', function() {
     
     
     // Naam klant
-    $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
         var arr = data2;
         var lang = [];
         var obj = JSON.parse(arr);

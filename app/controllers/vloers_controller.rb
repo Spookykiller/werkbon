@@ -1,5 +1,6 @@
 class VloersController < ApplicationController
     before_action :authenticate_user!
+    layout 'werkbonnen'
     before_action :find_vloer, only: [:print, :duplicate, :edit, :update, :destroy]
 
     def index
