@@ -47,7 +47,7 @@ $(document).on('turbolinks:load', function() {
     });
 
     // Project naam & project nummer
-    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
+    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
         var arr = data;
         var lang = [];
         var project_nummer = [];
@@ -81,7 +81,7 @@ $(document).on('turbolinks:load', function() {
     });
     
     // Leverancier
-    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
+    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
         
         var arr = data;
         var lang = [];
@@ -100,7 +100,7 @@ $(document).on('turbolinks:load', function() {
     
     
     // Naam klant
-    $.post( "https://updateconnector-koenders.c9users.io/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
         var arr = data2;
         var lang = [];
         var obj = JSON.parse(arr);
