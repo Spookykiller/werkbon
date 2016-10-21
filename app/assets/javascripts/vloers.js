@@ -77,7 +77,6 @@ $(document).on('turbolinks:load', function() {
                 
     }).fail(function(fail) {
         alert('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
-        alert(fail);
     });
     
     // Leverancier
