@@ -4,6 +4,14 @@
       <%= link_to root_path do %>
         <img src="/images/Total4Projects.svg">
       <% end %>
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, :method => :delete do %>        
+          <li>Uitloggen</li>
+        <% end %>
+        <%= link_to edit_user_registration_path do %>
+          <li>Gebruiker instellingen</li>
+        <% end %>
+      <% end %>
       <%= link_to articles_path do %>
         <li>Artikelen</li>
       <% end %>
