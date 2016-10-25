@@ -162,7 +162,7 @@ function getSibDat(obj, key, value, ukKeys) {
             var DebtorId = (dat[2]);
             $("#vloer_project_nummer").val(dat[3]);
             
-            $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
                 getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr']);
             });
@@ -180,7 +180,7 @@ function getSibDatId(obj, key, value, ukKeys) {
             var DebtorId = (dat[2]);
             $("#vloer_project_naam").val(dat[3]);
             
-            $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
                 getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr']);
             });
@@ -205,7 +205,7 @@ function getSibDatKlant(obj, key, value, ukKeys) {
             $("#vloer_email").val(dat2[5]);
             $("#vloer_telefoon").val(dat2[6]);
 
-            $.get( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
+            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
                 var obj = JSON.parse(data);
                 getSibDatKlantInfo(obj, 'DebtorId', DebtorId, ['ProjectId', 'Description']);
             });
