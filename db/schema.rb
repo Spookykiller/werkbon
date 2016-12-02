@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024130014) do
+ActiveRecord::Schema.define(version: 20161125090928) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "omschrijving"
@@ -23,20 +23,26 @@ ActiveRecord::Schema.define(version: 20161024130014) do
 
   create_table "calculations", force: :cascade do |t|
     t.string   "werkbon"
-    t.decimal  "ruimte"
+    t.string   "ruimte"
+    t.decimal  "aantal"
     t.decimal  "breedte"
     t.decimal  "hoogte"
-    t.boolean  "stuks"
-    t.boolean  "bed"
-    t.boolean  "voeren"
+    t.string   "strakke_hoogte_maat"
+    t.boolean  "bmdm"
+    t.string   "stuks"
     t.decimal  "hoofdje"
+    t.decimal  "rail_lengte"
+    t.string   "bocht"
+    t.string   "montage"
     t.boolean  "bediening"
+    t.decimal  "montage_hoogte"
+    t.string   "plaatsing"
+    t.boolean  "bed"
     t.string   "type"
     t.boolean  "uitlijnen"
-    t.boolean  "bmdm"
     t.integer  "vloer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "calculations", ["vloer_id"], name: "index_calculations_on_vloer_id"
@@ -91,6 +97,24 @@ ActiveRecord::Schema.define(version: 20161024130014) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "naam"
+    t.string   "project_nummer"
+    t.string   "project_naam"
+    t.string   "AdressLine1"
+    t.string   "AdressLine3"
+    t.string   "AdressLine4"
+    t.string   "telefoon"
+    t.string   "email"
+    t.string   "contactpersoon"
+    t.string   "oplevering"
+    t.string   "ordernummer"
+    t.decimal  "totale_prijs",   default: 0.0
+    t.decimal  "totale_arbeid",  default: 0.0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "regels", force: :cascade do |t|
     t.string   "werkbon"
     t.string   "article_type"
@@ -134,26 +158,19 @@ ActiveRecord::Schema.define(version: 20161024130014) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vloers", force: :cascade do |t|
-    t.string   "naam"
-    t.string   "project_nummer"
-    t.string   "project_naam"
-    t.string   "AdressLine1"
-    t.string   "AdressLine3"
-    t.string   "AdressLine4"
-    t.string   "telefoon"
-    t.string   "email"
     t.integer  "organisatie"
-    t.string   "contactpersoon"
     t.string   "datum"
     t.string   "werkvoorbereider"
-    t.string   "oplevering"
-    t.string   "ordernummer"
     t.string   "werkbon_type"
-    t.decimal  "totale_prijs"
-    t.decimal  "totale_arbeid"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.decimal  "totale_prijs",     default: 0.0
+    t.decimal  "totale_arbeid",    default: 0.0
     t.text     "bijzonderheden"
+    t.integer  "status",           default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "order_id"
   end
+
+  add_index "vloers", ["order_id"], name: "index_vloers_on_order_id"
 
 end

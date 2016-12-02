@@ -18,7 +18,7 @@
         %th= f.label :var_2_eenheid, 'Eenheid input 2'
     %tbody
       %tr
-        %td= f.select :werkbon, ['', 'Gordijnen/vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12'
+        %td= f.select :werkbon, ['', 'Gordijnen', 'Vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12'
         %td= f.collection_select(:article_type, Article.all, :prijs, :omschrijving, :include_blank => true) 
         %td= f.text_field :label 
         %td

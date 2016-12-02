@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
         @article = Article.new article_params
 
         if @article.save
-            flash[:notice] = "De article is opgeslagen!"
+            flash[:notice] = "Het artikel is opgeslagen!"
             redirect_to action: "index"
         else
             render 'new'
@@ -33,10 +33,10 @@ class ArticlesController < ApplicationController
     
     def update
         if @article.update article_params
-            flash[:notice] = "Uw article is succesvol aangepast."
+            flash[:notice] = "Uw artikel is succesvol aangepast."
             redirect_to action: "index"
         else
-            flash[:notice] = "Oh nee! Uw article kon niet opgeslagen worden."
+            flash[:notice] = "Oh nee! Uw artikel kon niet opgeslagen worden."
             render 'edit'
         end
     end

@@ -7,6 +7,10 @@
     float: left;
 }
 
+.calculations input, .calculations select {
+    max-width: 100px;
+}
+
 #general_info.radio_buttons {
     float: right;
 }

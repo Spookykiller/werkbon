@@ -1,16 +1,19 @@
 %table
   %head
     %tr
-      %th.gordijnen_raam ruimte/aantal
-      %th.gordijnen_raam breedte x hoogte
-      %th{:class => "gordijnen", :colspan => 2} stuk L-R/stel
-      %th{:class => "gordijnen", :colspan => 2} bediening
-      %th{:class => "gordijnen", :colspan => 2} voeren
-      %th.gordijnen hoofdje
-      %th{:class => "raam", :colspan => 2} bediening
-      %th.raam type
-      %th{:class => "raam", :colspan => 2} uitlijnen
-      %th{:class => "gordijnen_raam", :colspan => 2} BM/DM
+      %th.vouwgordijnen.gordijnen ruimte
+      %th.vouwgordijnen.gordijnen aantal
+      %th{:class => "vouwgordijnen gordijnen", :colspan => 2} breedte x hoogte (cm)
+      %th.gordijnen strakke hoogte maat (cm)
+      %th{:class => "vouwgordijnen gordijnen", :colspan => 2} BM/DM
+      %th.gordijnen stuk L-R/stel
+      %th.gordijnen hoofdje (cm)
+      %th.gordijnen rail lengte (cm)
+      %th.gordijnen bocht
+      %th.vouwgordijnen.gordijnen montage
+      %th{:class => "vouwgordijnen", :colspan => 2} bediening
+      %th.vouwgordijnen montage hoogte (cm)
+      %th.vouwgordijnen.gordijnen plaatsing
       %th.actions verwijder
   %tbody.calculations
     #tasks

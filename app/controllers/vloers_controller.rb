@@ -2,6 +2,7 @@ class VloersController < ApplicationController
     before_action :authenticate_user!
     layout 'werkbonnen'
     before_action :find_vloer, only: [:print, :duplicate, :edit, :update, :destroy]
+    before_action :find_order, only: [:index, :new, :create, :print, :duplicate, :edit, :update, :destroy]
 
     def index
         @vloers = Vloer.all
@@ -9,7 +10,6 @@ class VloersController < ApplicationController
     
     def new
         @vloer = Vloer.new
-        @test = "Vloeren"
     end
     
     def find_pakbon
@@ -19,8 +19,10 @@ class VloersController < ApplicationController
     end
     
     def create
+        @order = Order.find(params[:order_id])
         @vloer = Vloer.new vloer_params
-
+        @vloer.order_id = @order.id
+        
         if @vloer.save
             flash[:notice] = "De werkbon is opgeslagen!"
             redirect_to action: "index"
@@ -32,10 +34,18 @@ class VloersController < ApplicationController
     
     def duplicate
         new_record = @vloer.dup
+        new_record.werkvoorbereider = current_user.fullname
         
         if new_record.save 
+            @vloer.items.each do |item|
+                new_record.items.create(item.dup.attributes)
+            end
+            
+            @vloer.calculations.each do |calculation|
+                new_record.calculations.create(calculation.dup.attributes)
+            end
             flash[:notice] = "De werkbon is gedupliceerd!"
-            redirect_to action: "index"
+            redirect_to edit_order_vloer_path(@order, new_record)
         else
             redirect_to action: "index"
             flash[:notice] = "Oh nee! De werkbon is niet gedupliceerd."
@@ -50,10 +60,10 @@ class VloersController < ApplicationController
     
     def update
         if @vloer.update vloer_params
-            flash[:notice] = "Uw werkbon is succesvol aangepast."
+            flash[:notice] = "De werkbon is succesvol aangepast."
             redirect_to action: "index"
         else
-            flash[:notice] = "Oh nee! Uw werbon kon niet opgeslagen worden."
+            flash[:notice] = "Oh nee! De werbon kon niet opgeslagen worden."
             render 'edit'
         end
     end
@@ -66,11 +76,15 @@ class VloersController < ApplicationController
     private
     
     def vloer_params
-        params.require(:vloer).permit(:naam, :project_nummer, :project_naam, :AdressLine1, :AdressLine3, :AdressLine4, :telefoon, :email, :organisatie, :contactpersoon, :datum, :werkvoorbereider, :oplevering, :ordernummer, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :voorraad_actie, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :breedte, :hoogte, :stuks, :bed, :voeren, :hoofdje, :bediening, :type, :uitlijnen, :bmdm, :_destroy] )
+        params.require(:vloer).permit(:status, :order, :organisatie, :datum, :werkvoorbereider, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :voorraad_actie, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :aantal, :breedte, :hoogte, :strakke_hoogte_maat, :bmdm, :stuks, :hoofdje, :rail_lengte, :bocht, :montage, :bediening, :montage_hoogte, :plaatsing, :bed, :type, :uitlijnen, :_destroy] )
     end
     
     def find_vloer
-       @vloer = Vloer.find(params[:id]) 
+        @vloer = Vloer.find(params[:id]) 
     end
-
+    
+    def find_order
+        @order = Order.find(params[:order_id])
+    end
+    
 end

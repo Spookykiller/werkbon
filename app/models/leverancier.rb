@@ -3,6 +3,6 @@ class Leverancier < ActiveRecord::Base
     has_many :regels
     accepts_nested_attributes_for :leverancier_regels, reject_if: :all_blank, allow_destroy: true
     
-    validates :leverancier_label, uniqueness: true
+    validates :leverancier_label, uniqueness: true, presence: true
     validates :leverancier_werkbon, presence: true
 end

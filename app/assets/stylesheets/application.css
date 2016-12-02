@@ -12,6 +12,7 @@
  *
  *= require jquery-ui
  *= require_self
+ *= require toastr
  */
 
 * {
@@ -69,8 +70,10 @@ ul {
 
 th {
     font-size: 14px;
-    color: #0063a2;
     padding: 10px 0;
+    background-color: #0063a2;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
 }
 
 td {
@@ -114,15 +117,22 @@ table input {
 }
 
 table, th {
-    border: 1px solid black;
+    border: 1px solid #174d6f;
 }
 
 
 table input {
-    width: 100%;
-    max-width: 250px;
     height: 35px;
     font-size: 14px;
+}
+
+.var1 input, .var2 input {
+    width: calc(100% - 40px);
+}
+
+
+.numbers_width {
+    max-width: 80px;
 }
 
 #general_info {

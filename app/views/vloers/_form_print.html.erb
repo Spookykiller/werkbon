@@ -1,4 +1,4 @@
-<%= form_for @vloer, :html => {:class =>  'form-horizontal form-label-left', :remote => true } do |f| %>
+<%= form_for [@order, @vloer], :html => {:class =>  'form-horizontal form-label-left', :remote => true } do |f| %>
     <% if @vloer.errors.any? %>
         <h2><%= pluralize(@vloer.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h2>
         <ul>
@@ -11,40 +11,42 @@
         <div id="left">
             
             <%= f.label :werkbon_type, 'Werkbon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.select :werkbon_type, ['Gordijnen/vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12', id: 'werkbon_type' %><br>
+            <%= f.select :werkbon_type, ['Gordijnen', 'Vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12', id: 'werkbon_type' %><br>
 
-            <%= f.label :project_naam, 'Projectnaam', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :project_naam, class: 'form-control col-md-7 col-xs-12' %><br>
-
-            <%= f.label :project_nummer, 'Projectnummer', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :project_nummer, class: 'form-control col-md-7 col-xs-12' %><br>
-
-            <%= f.label :naam, 'Naam klant', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :naam, class: 'form-control col-md-7 col-xs-12' %><br>
-
-            <%= f.label :AdressLine1, 'Adres', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :AdressLine1, class: 'form-control col-md-7 col-xs-12' %><br>
-            <%= f.text_field :AdressLine3, class: 'form-control col-md-7 col-xs-12' %><br>
-            <%= f.text_field :AdressLine4, class: 'form-control col-md-7 col-xs-12' %><br>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Projectnaam</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.project_naam %>" type="text"><br>
+            
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Projectnummer</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.project_nummer %>" type="text"><br>
+            
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Naam klant</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.naam %>" type="text"><br>
+            
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Adres</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.AdressLine1 %>" type="text"><br>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.AdressLine3 %>" type="text"><br>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.AdressLine4 %>" type="text"><br>
+            
             <br>
             <br>
             
-            <%= f.label :telefoon, 'Telefoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :telefoon, class: 'form-control col-md-7 col-xs-12' %>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefoon</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.telefoon %>" type="number"><br>
 
         </div>
         
         <div id="right">
-            <%= f.label :email, 'E-mail', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12' %><br>
             
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">E-mail</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.email %>" type="text"><br>
+
             <%= f.label :organisatie, 'Organisatie', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.select(:organisatie,{ "T4P" => 1, "T4L WW" => 2, "T4L A'F" => 3, "T4L A'dam" => 4, "T4L Breda" => 5}) %>
             
             <br>
-        
-            <%= f.label :contactpersoon, 'Contactpersoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :contactpersoon, class: 'form-control col-md-7 col-xs-12' %><br>
+            
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Contactpersoon</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.contactpersoon %>" type="text"><br>
 
             <%= f.label :datum, 'Datum', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :datum, class: 'form-control col-md-7 col-xs-12', id: 'datepicker' %><br>
@@ -52,11 +54,11 @@
             <%= f.label :werkvoorbereider, 'Ingevuld door', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :werkvoorbereider, class: 'form-control col-md-7 col-xs-12' %><br>
 
-            <%= f.label :oplevering, 'Oplevering', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :oplevering, class: 'form-control col-md-7 col-xs-12', id: 'datepicker1' %><br>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Oplevering</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.oplevering %>" type="text"><br>
 
-            <%= f.label :ordernummer, 'Ons ordernummer', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :ordernummer, class: 'form-control col-md-7 col-xs-12' %><br>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ons ordernummer</label>
+            <input class="form-control col-md-7 col-xs-12" value="<%= @order.ordernummer %>" type="text"><br>
 
             <%= f.label :totale_prijs, 'Totaal bedrag', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs' %><br>

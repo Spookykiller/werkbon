@@ -49,10 +49,10 @@ class RegelsController < ApplicationController
     
     def update
         if @regel.update regel_params
-            flash[:notice] = "Uw regel is succesvol aangepast."
+            flash[:notice] = "De regel is succesvol aangepast."
             redirect_to action: "index"
         else
-            flash[:notice] = "Oh nee! Uw regel kon niet opgeslagen worden."
+            flash[:notice] = "Oh nee! De regel kon niet opgeslagen worden."
             render 'edit'
         end
     end

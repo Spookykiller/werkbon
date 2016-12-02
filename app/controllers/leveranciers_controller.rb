@@ -33,10 +33,10 @@ class LeveranciersController < ApplicationController
     
     def update
         if @leverancier.update leverancier_params
-            flash[:notice] = "Uw leverancier is succesvol aangepast."
+            flash[:notice] = "De leverancier is succesvol aangepast."
             redirect_to action: "index"
         else
-            flash[:notice] = "Oh nee! Uw leverancier kon niet opgeslagen worden."
+            flash[:notice] = "Oh nee! De leverancier kon niet opgeslagen worden."
             render 'edit'
         end
     end

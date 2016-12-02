@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  resources :vloers, except: :show do
+  resources :orders, except: :show do
     member do
       get 'duplicate'
       get 'print'
+    end
+    resources :vloers, except: :show do
+      member do
+        get 'duplicate'
+        get 'print'
+      end
     end
   end
   
@@ -19,5 +25,5 @@ Rails.application.routes.draw do
   get 'vloers/find_pakbon'
   get 'regels/new_blanko'
 
-  root 'vloers#index'
+  root 'orders#index'
 end

@@ -25,6 +25,9 @@ gem 'devise'
 # Filter
 gem 'filterrific'
 
+# Notifications
+gem 'toastr-rails'
+
 group :development, :test do
   gem 'byebug'
 end

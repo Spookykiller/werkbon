@@ -2,12 +2,12 @@
   %head
     %tr
       %th.item_voorraad_actie V/B
-      %th Hoeveelheid
-      %th.label Label
+      %th.numbers_width Hoeveelheid
+      %th Label
       %th{:colspan => "2"} Invulvelden
-      %th Prijs
-      %th Totaal prijs
-      %th Totaal arbeid
+      %th.numbers_width Prijs
+      %th.numbers_width Totaal prijs
+      %th.numbers_width Totaal arbeid
   %tbody
     #tasks
       = f.fields_for :items do |item|

@@ -1,44 +1,68 @@
+<div class="center">
+    <h3>Werkbonnen van `<%= @order.project_naam %>` order</h3>
+</div>
+
+<br>
+<br>
+
 <table border="1" style="width:100%">
       <thead>
         <tr>
-            <th>Werkbon type</th>
-            <th>Projectnaam</th>
-            <th>Projectnummer</th>
-            <th>Oplevering</th>
-            <th>Ingevuld door</th>
+            <th colspan="2">Status</th>
+            <th>Werkbontype</th>
             <th>Organisatie</th>
+            <th>Datum</th>
+            <th>Ingevuld door</th>
             <th>Acties</th>
         </tr>
       </thead>
     <% @vloers.each do |vloer| %>
       <tbody>
           <tr>
-              <td class="index"><%= vloer.werkbon_type %></td>
-              <td class="index"><%= vloer.project_naam %></td>
-              <td class="index"><%= vloer.project_nummer %></td>
-              <td class="index"><%= vloer.oplevering %></td>
-              <td class="index"><%= vloer.werkvoorbereider %></td>
               <td class="index">
-                    <% if vloer.organisatie == 1 %>
-                        T4P
-                    <% elsif vloer.organisatie == 2 %>
-                        T4L WW
-                    <% elsif vloer.organisatie == 3 %>
-                        T4L A'F
-                    <% elsif vloer.organisatie == 4 %>
-                        T4L A'dam
-                    <% elsif vloer.organisatie == 5 %>
-                        T4L Breda
-                    <% end %>
+                <% if vloer.status == 0 %>
+                    <img src="/images/offerte.png" alt="Offerte status" class="edit_icon">
+                <% elsif vloer.status == 1 %>
+                    <img src="/images/meting.png" alt="Meting status" class="edit_icon">
+                <% elsif vloer.status == 2 %>
+                    <img src="/images/definitief.png" alt="Definitief status" class="edit_icon">
+                <% end %>
+              </td>              
+              <td class="index">
+                <% if vloer.status == 0 %>
+                    Offerte
+                <% elsif vloer.status == 1 %>
+                    Meting
+                <% elsif vloer.status == 2 %>
+                    Definitief
+                <% end %>
               </td>
-              <td class="center"><%= link_to edit_vloer_path(vloer) do %>
+              <td class="index">
+                  <%= vloer.werkbon_type %>
+              </td>
+              <td class="index">
+                <% if vloer.organisatie == 1 %>
+                    T4P
+                <% elsif vloer.organisatie == 2 %>
+                    T4L WW
+                <% elsif vloer.organisatie == 3 %>
+                    T4L A'F
+                <% elsif vloer.organisatie == 4 %>
+                    T4L A'dam
+                <% elsif vloer.organisatie == 5 %>
+                    T4L Breda
+                <% end %>
+              </td>
+              <td class="index"><%= vloer.datum %></td>
+              <td class="index"><%= vloer.werkvoorbereider %></td>
+              <td class="center"><%= link_to edit_order_vloer_path(@order, vloer) do %>
                   <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
               <% end %>
-              <%= link_to vloer_path(vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+              <%= link_to order_vloer_path(@order, vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
                   <img src="/images/delete.png" alt="Delete" class="edit_icon">
               <% end %>
-              <%= link_to "Duplicate", duplicate_vloer_path(vloer) %>
-              <%= link_to "Print", print_vloer_path(vloer) %>
+              <%= link_to "Duplicate", duplicate_order_vloer_path(@order, vloer) %>
+              <%= link_to "Print", print_order_vloer_path(@order, vloer) %>
               </td>
           </tr>
       </tbody>
@@ -46,7 +70,7 @@
 </table>
 <br>
 <div>
-    <%= link_to new_vloer_path do %>
+    <%= link_to new_order_vloer_path do %>
         <button class="new_werkbon">Nieuwe werkbon +</button>
     <% end %>
 </div>

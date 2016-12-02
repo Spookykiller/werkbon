@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery-ui
 //= require cocoon
+//= require toastr
 
 $(document).on('turbolinks:load', function() {
     $(".add_items").click();
@@ -25,4 +26,4 @@ $(document).on('turbolinks:load', function() {
             return false;
         }
     });
-} );
+});

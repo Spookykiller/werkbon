@@ -4,7 +4,7 @@
       .field
         %td
           = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
-        %td
+        %td.numbers_width
           = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
         %td.label
           = f.label :var2, f.object.var2_name, :class => "leverancier"
@@ -17,9 +17,9 @@
               - else
                 = f.text_field :var2, :class => "leverancier_input"
         %td.var2
-        %td
+        %td.numbers_width
           = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
-        %td
+        %td.numbers_width
           = f.number_field :totale_prijs, :class => "item_totaal_prijs", :step => '0.01'
-        %td
+        %td.numbers_width
           = f.number_field :totale_arbeid, :class => "item_totaal_arbeid", :step => '0.01'

@@ -1,0 +1,46 @@
+<table border="1" style="width:100%">
+      <thead>
+        <tr>
+            <th>Projectnaam</th>
+            <th>Projectnummer</th>
+            <th>Oplevering</th>
+            <th>Contactpersoon</th>
+            <th>Email</th>
+            <th>Nieuwe werkbon</th>
+            <th>Acties</th>
+        </tr>
+      </thead>
+    <% @orders.each do |order| %>
+      <tbody>
+          <tr>
+              <td class="index"><%= order.project_naam %></td>
+              <td class="index"><%= order.project_nummer %></td>
+              <td class="index"><%= order.oplevering %></td>
+              <td class="index"><%= order.contactpersoon %></td>
+              <td class="index"><%= order.email %></td>
+              <td class="index">
+                <%= link_to order_vloers_path(order) do %> 
+                    Werkbonnen
+                    <img src="/images/search-icon.png" alt="Show" class="edit_icon">
+                <% end %>
+              </td>
+              <td class="center">
+                 <%= link_to edit_order_path(order) do %>
+                  <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+              <% end %>
+              <%= link_to order_path(order), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+                  <img src="/images/delete.png" alt="Delete" class="edit_icon">
+              <% end %>
+              <%= link_to "Duplicate", duplicate_order_path(order) %>
+              <%# link_to "Print", print_order_path(order) %>
+              </td>
+          </tr>
+      </tbody>
+    <% end %>
+</table>
+<br>
+<div>
+    <%= link_to new_order_path do %>
+        <button class="new_werkbon">Nieuwe order +</button>
+    <% end %>
+</div>
