@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function() {
         });
         
         // Project naam
-        $("#vloer_project_naam").autocomplete({
+        $("#order_project_naam").autocomplete({
             source: lang,
             select: function(event, ui) {
                 var item_value = (ui.item.value);
@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
         });
         
         // Project nummer
-        $("#vloer_project_nummer").autocomplete({
+        $("#order_project_nummer").autocomplete({
             source: project_nummer,
             select: function(event, ui) {
                 var item_value = (ui.item.value);
@@ -107,7 +107,7 @@ $(document).on('turbolinks:load', function() {
             lang.push(this['DebtorName'])
         });
 
-        $("#vloer_naam").autocomplete({
+        $("#order_naam").autocomplete({
             source: lang,
             select: function(event, ui) {
                 var item_value = (ui.item.value);
@@ -162,7 +162,7 @@ function getSibDat(obj, key, value, ukKeys) {
                 dat.push(obj[i][ukKeys[x]]);
             }
             var DebtorId = (dat[2]);
-            $("#vloer_project_nummer").val(dat[3]);
+            $("#order_project_nummer").val(dat[3]);
             
             $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
@@ -180,7 +180,7 @@ function getSibDatId(obj, key, value, ukKeys) {
                 dat.push(obj[i][ukKeys[x]]);
             }
             var DebtorId = (dat[2]);
-            $("#vloer_project_naam").val(dat[3]);
+            $("#order_project_naam").val(dat[3]);
             
             $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
@@ -201,11 +201,11 @@ function getSibDatKlant(obj, key, value, ukKeys) {
                 dat2[3] = "Nederland";
             }
             var DebtorId = (dat2[4]);
-            $("#vloer_AdressLine1").val(dat2[1]);
-            $("#vloer_AdressLine3").val(dat2[2]);
-            $("#vloer_AdressLine4").val(dat2[3]);
-            $("#vloer_email").val(dat2[5]);
-            $("#vloer_telefoon").val(dat2[6]);
+            $("#order_AdressLine1").val(dat2[1]);
+            $("#order_AdressLine3").val(dat2[2]);
+            $("#order_AdressLine4").val(dat2[3]);
+            $("#order_email").val(dat2[5]);
+            $("#order_telefoon").val(dat2[6]);
 
             $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
                 var obj = JSON.parse(data);
@@ -225,12 +225,12 @@ function getSibDatDebtor(obj2, key, value, ukKeys) {
             if (dat2[3] == null) {
                 dat2[3] = "Nederland"
             }
-            $("#vloer_AdressLine1").val(dat2[1]);
-            $("#vloer_AdressLine3").val(dat2[2]);
-            $("#vloer_AdressLine4").val(dat2[3]);
-            $("#vloer_naam").val(dat2[4]);
-            $("#vloer_email").val(dat2[5]);
-            $("#vloer_telefoon").val(dat2[6]);
+            $("#order_AdressLine1").val(dat2[1]);
+            $("#order_AdressLine3").val(dat2[2]);
+            $("#order_AdressLine4").val(dat2[3]);
+            $("#order_naam").val(dat2[4]);
+            $("#order_email").val(dat2[5]);
+            $("#order_telefoon").val(dat2[6]);
         }
     }
 }
@@ -242,15 +242,15 @@ function getSibDatKlantInfo(obj, key, value, ukKeys) {
             for (var x = 0; x < ukKeys.length; x++) {
                 dat.push(obj[i][ukKeys[x]]);
             }
-            $("#vloer_project_nummer").val(dat[0]);
-            $("#vloer_project_naam").val(dat[1]);
+            $("#order_project_nummer").val(dat[0]);
+            $("#order_project_naam").val(dat[1]);
         }
     }
 }
 
 function getWerkbonType() {
     
-    $('#vloer_werkbon_type').change(function(){
+    $('#order_werkbon_type').change(function(){
         var value = $(this).val()
         var item = $('#item_werkbon_type').val();
         
@@ -288,7 +288,7 @@ function getWerkbonType() {
 }
 
 function getWerkbonTypeAfter() {
-    var value = $('#vloer_werkbon_type').val();
+    var value = $('#order_werkbon_type').val();
 
     $('.calculation').show();
 
