@@ -8,5 +8,5 @@ class Regel < ActiveRecord::Base
     accepts_nested_attributes_for :second_dropdowns, reject_if: :all_blank, allow_destroy: true
     
     validates :werkbon, presence: true
-    validates :label, presence: true, uniqueness: true
+    validates :label, presence: true
 end
