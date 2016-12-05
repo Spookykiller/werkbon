@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161125090928) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.string   "omschrijving"
     t.decimal  "prijs"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "calculations", ["vloer_id"], name: "index_calculations_on_vloer_id"
+  add_index "calculations", ["vloer_id"], name: "index_calculations_on_vloer_id", using: :btree
 
   create_table "dropdowns", force: :cascade do |t|
     t.string   "input"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.string   "article_type"
   end
 
-  add_index "dropdowns", ["regel_id"], name: "index_dropdowns_on_regel_id"
+  add_index "dropdowns", ["regel_id"], name: "index_dropdowns_on_regel_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.decimal  "hoeveelheid"
@@ -79,7 +82,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.string   "voorraad_actie"
   end
 
-  add_index "items", ["vloer_id"], name: "index_items_on_vloer_id"
+  add_index "items", ["vloer_id"], name: "index_items_on_vloer_id", using: :btree
 
   create_table "leverancier_regels", force: :cascade do |t|
     t.string   "input"
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "leverancier_regels", ["leverancier_id"], name: "index_leverancier_regels_on_leverancier_id"
+  add_index "leverancier_regels", ["leverancier_id"], name: "index_leverancier_regels_on_leverancier_id", using: :btree
 
   create_table "leveranciers", force: :cascade do |t|
     t.string   "leverancier_werkbon"
@@ -134,7 +137,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.string   "article_type"
   end
 
-  add_index "second_dropdowns", ["regel_id"], name: "index_second_dropdowns_on_regel_id"
+  add_index "second_dropdowns", ["regel_id"], name: "index_second_dropdowns_on_regel_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -154,8 +157,8 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.datetime "locked_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vloers", force: :cascade do |t|
     t.integer  "organisatie"
@@ -171,6 +174,12 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.integer  "order_id"
   end
 
-  add_index "vloers", ["order_id"], name: "index_vloers_on_order_id"
+  add_index "vloers", ["order_id"], name: "index_vloers_on_order_id", using: :btree
 
+  add_foreign_key "calculations", "vloers"
+  add_foreign_key "dropdowns", "regels"
+  add_foreign_key "items", "vloers"
+  add_foreign_key "leverancier_regels", "leveranciers"
+  add_foreign_key "second_dropdowns", "regels"
+  add_foreign_key "vloers", "orders"
 end
