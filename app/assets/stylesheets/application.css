@@ -127,7 +127,7 @@ table input {
 }
 
 .var1 input, .var2 input {
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
 }
 
 
