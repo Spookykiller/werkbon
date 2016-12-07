@@ -1,9 +1,9 @@
-<%= form_for [@order, @vloer], :html => {:class =>  'form-horizontal form-label-left', :remote => true } do |f| %>
-    <% if @vloer.errors.any? %>
-        <h2><%= pluralize(@vloer.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h2>
+<%= form_for [@order, @vloer], :html => {:class =>  'form-horizontal form-label-left' } do |f| %>
+    <% if @order.errors.any? %>
+        <h3><%= pluralize(@order.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h3>
         <ul>
-            <% @vloer.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><p><%= msg %></p></li>
             <% end %>
         </ul>
     <% end %>

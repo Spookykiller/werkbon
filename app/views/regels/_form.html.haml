@@ -1,11 +1,12 @@
-= form_for @regel, :html => {:remote => true } do |f|
+= form_for @regel do |f|
   - if @regel.errors.any?
-    %h2
+    %h3
       = pluralize(@regel.errors.count, "error")
       zorgde ervoor dat de klant niet opgeslagen kon worden.
     %ul
       - @regel.errors.full_messages.each do |msg|
-        %li= msg
+        %li
+          %p= msg
   %table
     %thead
       %tr

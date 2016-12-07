@@ -13,19 +13,20 @@
           - Article.all.each do |article|
             - if regel.article_type == article.prijs
               = f.hidden_field :article_prijs, :value => article.prijs
-          - if regel.label == f.object.var1_name
-            - if regel.dropdowns.count != 0
-              = f.select(:var1, regel.dropdowns.map { |value| [ value.input, { 'value' => value.input, 'id' => value.article_type } ] }, {:include_blank => true})
-            - else
-              = f.text_field :var1
-              = regel.var_1_eenheid
-            %td.var2
-              - if regel.second_dropdowns.count != 0
-                = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, { 'value' => value.input, 'id' => value.article_type } ] }, {:include_blank => true})
-              - elsif !regel.var_2_eenheid.blank?
-                = f.text_field :var3
-                = f.hidden_field :var3_name, :value => regel.var_2_eenheid
-                = regel.var_2_eenheid
+          - if regel.id == f.object.id  
+            - if regel.label == f.object.var1_name
+              - if regel.dropdowns.count != 0
+                = f.select(:var1, regel.dropdowns.map { |value| [ value.input, { 'value' => value.input, 'id' => value.article_type } ] }, {:include_blank => true})
+              - else
+                = f.text_field :var1
+                = regel.var_1_eenheid
+              %td.var2
+                - if regel.second_dropdowns.count != 0
+                  = f.select(:var3, regel.second_dropdowns.map { |value| [ value.input, { 'value' => value.input, 'id' => value.article_type } ] }, {:include_blank => true})
+                - elsif !regel.var_2_eenheid.blank?
+                  = f.text_field :var3
+                  = f.hidden_field :var3_name, :value => regel.var_2_eenheid
+                  = regel.var_2_eenheid
       %td.numbers_width
         = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
       %td.numbers_width

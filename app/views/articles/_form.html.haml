@@ -1,11 +1,12 @@
-= form_for @article, :html => {:remote => true } do |f|
+= form_for @article do |f|
   - if @article.errors.any?
-    %h2
+    %h3
       = pluralize(@article.errors.count, "error")
       zorgde ervoor dat de klant niet opgeslagen kon worden.
     %ul
       - @article.errors.full_messages.each do |msg|
-        %li= msg
+        %li
+          %p= msg
   .center
     .column
       = f.label :omschrijving, 'Omschrijving', class: 'control-label col-md-3 col-sm-3 col-xs-12'
