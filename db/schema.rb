@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125090928) do
+ActiveRecord::Schema.define(version: 20161208124934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "voorraad_actie"
+    t.integer  "ref_id"
   end
 
   add_index "items", ["vloer_id"], name: "index_items_on_vloer_id", using: :btree
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 20161125090928) do
     t.string   "var_2_eenheid"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "ref_id"
   end
 
   create_table "second_dropdowns", force: :cascade do |t|

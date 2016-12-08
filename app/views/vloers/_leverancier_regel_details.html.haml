@@ -9,6 +9,7 @@
       = f.label :var1, regel.label
       = f.hidden_field :var1_name, :value => regel.label
     %td.var1
+      = f.hidden_field :ref_id, :value => regel.id
       - if regel.dropdowns.count != 0
         = f.select(:var1, regel.dropdowns.map { |value| [ value.input, { 'value' => value.input, 'id' => value.article_type } ] }, {:include_blank => true})
       - else
