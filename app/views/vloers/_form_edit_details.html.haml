@@ -1,7 +1,6 @@
 %table
   %head
     %tr
-      %th.item_voorraad_actie V/B
       %th.numbers_width Hoeveelheid
       %th Label
       %th{:colspan => "2"} Invulvelden
@@ -14,3 +13,4 @@
         - if item.object.werkbon_type == @vloer.werkbon_type
           = render 'leverancier_edit_details', f: item
           = render 'leverancier_regel_edit_details', f: item
+

@@ -1,8 +1,6 @@
 %tr.row
   .field
     = f.hidden_field :article_prijs, :value => regel.article_type
-    %td
-      = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
     %td.numbers_width
       = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
     %td.label

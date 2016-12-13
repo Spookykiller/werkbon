@@ -1,8 +1,6 @@
 %tr.row
   .leverancier_loop
     .field
-      %td
-        = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
       %td.numbers_width
         = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
       %td.label
@@ -14,6 +12,7 @@
         - else
           = f.text_field :var2, placeholder: "Type hier", :class => "leverancier_input"
       %td.var2
+        = f.select :var4, ["Op voorraad", "Bijbestellen"], :include_blank => true
       %td.numbers_width
         = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
       %td.numbers_width

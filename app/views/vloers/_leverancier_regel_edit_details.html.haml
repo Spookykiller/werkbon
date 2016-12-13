@@ -1,8 +1,6 @@
 - if !f.object.var1_name.blank?
   %tr.row
     .field
-      %td
-        = f.text_field :voorraad_actie, :class => "item_voorraad_actie"
       %td.numbers_width
         = f.number_field :hoeveelheid, :class => "item_hoeveelheid", :step => '0.01'
       %td.label

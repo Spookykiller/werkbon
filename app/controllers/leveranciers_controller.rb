@@ -49,7 +49,7 @@ class LeveranciersController < ApplicationController
     private
     
     def leverancier_params
-        params.require(:leverancier).permit(:leverancier_werkbon, :leverancier_label, leverancier_regels_attributes: [:id, :input, :_destroy] )
+        params.require(:leverancier).permit(:leverancier_werkbon, :leverancier_label, :voorraad_actie, leverancier_regels_attributes: [:id, :input, :_destroy] )
     end
     
     def find_leverancier

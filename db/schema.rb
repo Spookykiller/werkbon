@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208124934) do
+ActiveRecord::Schema.define(version: 20161213175027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,9 +77,8 @@ ActiveRecord::Schema.define(version: 20161208124934) do
     t.decimal  "totale_arbeid"
     t.string   "werkbon_type"
     t.integer  "vloer_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "voorraad_actie"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "ref_id"
   end
 
@@ -99,6 +98,7 @@ ActiveRecord::Schema.define(version: 20161208124934) do
     t.string   "leverancier_label"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "voorraad_actie"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -113,10 +113,11 @@ ActiveRecord::Schema.define(version: 20161208124934) do
     t.string   "contactpersoon"
     t.string   "oplevering"
     t.string   "ordernummer"
-    t.decimal  "totale_prijs",   default: 0.0
-    t.decimal  "totale_arbeid",  default: 0.0
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.decimal  "totale_prijs",    default: 0.0
+    t.decimal  "totale_arbeid",   default: 0.0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "navigatie_adres"
   end
 
   create_table "regels", force: :cascade do |t|

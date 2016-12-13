@@ -26,13 +26,14 @@
         </div>
         
         <div id="right">
+            <%= f.label :navigatie_adres, 'Navigatie adres', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :navigatie_adres, class: 'form-control col-md-7 col-xs-12' %><br>
+            
             <%= f.label :telefoon, 'Telefoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :telefoon, class: 'form-control col-md-7 col-xs-12' %><br>
             
             <%= f.label :email, 'E-mail', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :email, class: 'form-control col-md-7 col-xs-12' %><br>
-          
-            <br>
             
             <%= f.label :contactpersoon, 'Contactpersoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :contactpersoon, class: 'form-control col-md-7 col-xs-12' %><br>

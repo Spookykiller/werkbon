@@ -1,0 +1,17 @@
+%table
+  %head
+    %tr
+      %th.numbers_width Hoeveelheid
+      %th Label
+      %th{:colspan => "2"} Invulvelden
+      %th.numbers_width Prijs
+      %th.numbers_width Totaal prijs
+      %th.numbers_width Totaal arbeid
+  %tbody
+    #tasks
+      = f.fields_for :items do |item|
+        - if item.object.werkbon_type == @vloer.werkbon_type
+          - if !item.object.hoeveelheid.blank? || !item.object.var1.blank? || !item.object.var2.blank? || !item.object.var3.blank? || !item.object.var4.blank? || !item.object.prijs.blank? || !item.object.totale_arbeid.blank?
+            = render 'leverancier_edit_details', f: item
+            = render 'leverancier_regel_edit_details', f: item
+
