@@ -53,9 +53,11 @@ class VloersController < ApplicationController
     end
     
     def print
+        @items = @vloer.items.order("created_at ASC")
     end
     
     def edit
+        @items = @vloer.items.order("created_at ASC")
     end
     
     def update
