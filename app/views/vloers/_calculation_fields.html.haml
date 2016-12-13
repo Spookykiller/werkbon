@@ -12,6 +12,8 @@
         = f.number_field :hoogte, :class => "calculation_ruimte"
       %td.gordijnen
         = f.number_field :strakke_hoogte_maat, :class => "calculation_strakke_hoogte_maat"
+      %td.gordijnen
+        = f.text_field :knipmaat
       %td.vouwgordijnen.gordijnen
         = f.label :bmdm, "BM", :value => "true"
         = f.radio_button :bmdm, true, :class => "radio_button"
@@ -21,11 +23,13 @@
       %td.gordijnen
         = f.select :stuks, ["links", "midden", "rechts", "stel"]
       %td.gordijnen
-        = f.number_field :hoofdje
+        = f.select :hoofdje, [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
       %td.gordijnen
         = f.number_field :rail_lengte
       %td.gordijnen
-        = f.text_field :bocht
+        = f.text_field :bocht_type
+      %td.gordijnen
+        = f.text_field :bocht_maat
       %td.vouwgordijnen.gordijnen
         = f.select :montage, ["wand", "plafond", "dagkant"]
       %td.vouwgordijnen

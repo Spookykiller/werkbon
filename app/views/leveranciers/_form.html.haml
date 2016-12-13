@@ -9,6 +9,11 @@
           %p= msg
   .center
     .column
+      = f.label :sequence_id, "Volgorde op werkbon", class: 'control-label col-md-3 col-sm-3 col-xs-12'
+      %br
+      = f.number_field :sequence_id
+      %br
+      %br
       = f.label :leverancier_werkbon, 'Werkbon', class: 'control-label col-md-3 col-sm-3 col-xs-12'
       %br
       = f.select :leverancier_werkbon, ['Gordijnen', 'Vouwgordijnen', 'Raamdecoratie', 'Vloeren']

@@ -9,7 +9,7 @@
       %th.numbers_width Totaal arbeid
   %tbody.list
 .links
-  - Leverancier.all.each do |leverancier|
+  - @leveranciers.each do |leverancier|
     = link_to_add_association 'Voeg item toe', f, :items, render_options: {locals: { leverancier: leverancier }}, :class => "add_items", partial: 'leverancier_details',
       'data-association-insertion-method' => 'append',
       'data-association-insertion-node' => 'tbody.list'

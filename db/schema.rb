@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213175027) do
+ActiveRecord::Schema.define(version: 20161213191222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20161213175027) do
     t.string   "stuks"
     t.decimal  "hoofdje"
     t.decimal  "rail_lengte"
-    t.string   "bocht"
     t.string   "montage"
     t.boolean  "bediening"
     t.decimal  "montage_hoogte"
@@ -46,6 +45,12 @@ ActiveRecord::Schema.define(version: 20161213175027) do
     t.integer  "vloer_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "knipmaat"
+    t.string   "bocht_type"
+    t.string   "bocht_maat"
+    t.string   "snijmaat"
+    t.string   "ondervloer"
+    t.string   "legrichting"
   end
 
   add_index "calculations", ["vloer_id"], name: "index_calculations_on_vloer_id", using: :btree
@@ -99,6 +104,7 @@ ActiveRecord::Schema.define(version: 20161213175027) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "voorraad_actie"
+    t.integer  "sequence_id"
   end
 
   create_table "orders", force: :cascade do |t|
