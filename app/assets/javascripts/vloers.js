@@ -7,8 +7,7 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $(document).on('turbolinks:load', function() {
-    selected_values();
-    
+
     $('input').click(function(){
 	    $(this).select();
         update_subtotal();
