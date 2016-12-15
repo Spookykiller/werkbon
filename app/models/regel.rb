@@ -1,4 +1,5 @@
 class Regel < ActiveRecord::Base
+    has_many :articles
     has_many :dropdowns
     has_many :second_dropdowns
     belongs_to :vloer
