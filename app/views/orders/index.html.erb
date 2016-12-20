@@ -1,11 +1,11 @@
 <table border="1" style="width:100%">
       <thead>
         <tr>
-            <th>Projectnaam</th>
-            <th>Projectnummer</th>
-            <th>Oplevering</th>
-            <th>Contactpersoon</th>
-            <th>Email</th>
+            <th><%= sortable "project_naam", "Projectnaam" %></th>
+            <th><%= sortable "project_nummer", "Projectnummer" %></th>
+            <th><%= sortable "inmeetdatum", "Inmeetdatum" %></th>
+            <th><%= sortable "contactpersoon", "Contactpersoon" %></th>
+            <th><%= sortable "email", "Email" %></th>
             <th>Nieuwe werkbon</th>
             <th>Acties</th>
         </tr>
@@ -15,7 +15,7 @@
           <tr>
               <td class="index"><%= order.project_naam %></td>
               <td class="index"><%= order.project_nummer %></td>
-              <td class="index"><%= order.oplevering %></td>
+              <td class="index"><%= order.inmeetdatum %></td>
               <td class="index"><%= order.contactpersoon %></td>
               <td class="index"><%= order.email %></td>
               <td class="index">

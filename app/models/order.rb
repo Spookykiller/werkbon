@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
     
     validates :project_naam, presence: true
     validates :project_nummer, presence: true
+    validates :inmeetdatum, presence: true
     validates :oplevering, presence: true
     validates :email, presence: true
     validates :contactpersoon, presence: true

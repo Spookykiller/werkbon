@@ -2,9 +2,10 @@ class OrdersController < ApplicationController
     before_action :authenticate_user!
     layout 'werkbonnen'
     before_action :find_order, only: [:print, :duplicate, :edit, :update, :destroy]
+    helper_method :sort_column, :sort_direction
 
     def index
-        @orders = Order.all
+        @orders = Order.order(sort_column + " " + sort_direction)
     end
     
     def new
@@ -59,11 +60,19 @@ class OrdersController < ApplicationController
     private
     
     def order_params
-        params.require(:order).permit(:naam, :project_nummer, :project_naam, :AdressLine1, :AdressLine3, :AdressLine4, :navigatie_adres, :telefoon, :email, :contactpersoon, :oplevering, :ordernummer, :totale_prijs, :totale_arbeid, items_attributes: [:id, :voorraad_actie, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :breedte, :hoogte, :stuks, :bed, :voeren, :hoofdje, :bediening, :type, :uitlijnen, :bmdm, :_destroy] )
+        params.require(:order).permit(:naam, :project_nummer, :project_naam, :AdressLine1, :AdressLine3, :AdressLine4, :navigatie_adres, :telefoon, :email, :contactpersoon, :inmeetdatum, :oplevering, :ordernummer, :totale_prijs, :totale_arbeid, items_attributes: [:id, :voorraad_actie, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :breedte, :hoogte, :stuks, :bed, :voeren, :hoofdje, :bediening, :type, :uitlijnen, :bmdm, :_destroy] )
     end
     
     def find_order
        @order = Order.find(params[:id]) 
+    end
+    
+    def sort_column
+        Order.column_names.include?(params[:sort]) ? params[:sort] : "inmeetdatum"
+    end
+  
+    def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end
