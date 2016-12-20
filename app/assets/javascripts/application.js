@@ -20,10 +20,4 @@
 $(document).on('turbolinks:load', function() {
     $(".add_items").click();
     $(".add_items").hide();
-    
-    $("form").on("keypress", function (e) {
-        if (e.keyCode == 13) {
-            return false;
-        }
-    });
 });

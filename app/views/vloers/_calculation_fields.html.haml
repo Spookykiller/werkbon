@@ -27,6 +27,8 @@
       %td.gordijnen
         = f.number_field :rail_lengte
       %td.gordijnen
+        = f.select :type_roede, ["wand tot wand", "vrijstaand", "links vrij", "rechts vrij"]
+      %td.gordijnen
         = f.text_field :bocht_type
       %td.gordijnen
         = f.text_field :bocht_maat

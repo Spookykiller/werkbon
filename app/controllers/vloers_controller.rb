@@ -79,7 +79,7 @@ class VloersController < ApplicationController
     private
     
     def vloer_params
-        params.require(:vloer).permit(:status, :order, :organisatie, :datum, :werkvoorbereider, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :ref_id, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :aantal, :breedte, :hoogte, :strakke_hoogte_maat, :bmdm, :stuks, :hoofdje, :rail_lengte, :montage, :bediening, :montage_hoogte, :plaatsing, :bed, :type, :uitlijnen, :knipmaat, :bocht_type, :bocht_maat, :snijmaat, :ondervloer, :legrichting, :_destroy] )
+        params.require(:vloer).permit(:status, :order, :organisatie, :datum, :werkvoorbereider, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :ref_id, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :aantal, :breedte, :hoogte, :strakke_hoogte_maat, :bmdm, :stuks, :hoofdje, :rail_lengte, :type_roede, :montage, :bediening, :montage_hoogte, :plaatsing, :bed, :type, :uitlijnen, :knipmaat, :bocht_type, :bocht_maat, :snijmaat, :ondervloer, :legrichting, :_destroy] )
     end
     
     def find_vloer

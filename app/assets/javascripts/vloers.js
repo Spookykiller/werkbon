@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
     $("input:radio[name=printstyle]").click(function() {
         var value = $(this).val();
         if (value == 'geel') {
+            $('#werkbon_totale_prijs').css('color', 'white');
             $('.item_artikel_prijs').css('color', 'white');
             $('.item_totaal_prijs').css('color', 'white');
             $('.item_totaal_arbeid').css('color', 'white');
@@ -27,6 +28,7 @@ $(document).on('turbolinks:load', function() {
             $('.item_artikel_prijs').css('color', 'black');
             $('.item_totaal_prijs').css('color', 'black');
             $('.item_totaal_arbeid').css('color', 'black');
+            $('#werkbon_totale_prijs').css('color', 'black');
         }
     });
     
