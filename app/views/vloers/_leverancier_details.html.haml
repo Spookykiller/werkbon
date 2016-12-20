@@ -12,7 +12,7 @@
         - else
           = f.text_field :var2, placeholder: "Type hier", :class => "leverancier_input"
       %td.var2
-        = f.select :var4, ["Op voorraad", "Bijbestellen"], :include_blank => true
+        = f.select :var4, ["Op voorraad", "Bestellen"], :include_blank => true
       %td.numbers_width
         = f.number_field :prijs, :class => "item_artikel_prijs", :step => '0.01'
       %td.numbers_width
