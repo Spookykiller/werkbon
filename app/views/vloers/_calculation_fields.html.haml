@@ -1,15 +1,21 @@
 %tr.row.nested-fields  
   .leverancier_loop
     .field
-      %td.vouwgordijnen.gordijnen
+      %td.vouwgordijnen.gordijnen.vloeren
         = f.text_field :ruimte, :class => "calculation_ruimte"
         = f.hidden_field :werkbon
-      %td.vouwgordijnen.gordijnen
+      %td.vouwgordijnen.gordijnen.vloeren
         = f.number_field :aantal, :class => "calculation_number"
-      %td.vouwgordijnen.gordijnen
+      %td.vouwgordijnen.gordijnen.vloeren
         = f.number_field :breedte, :class => "calculation_breedte"
-      %td.vouwgordijnen.gordijnen
+      %td.vouwgordijnen.gordijnen.vloeren
         = f.number_field :hoogte, :class => "calculation_ruimte"
+      %td.vloeren
+        = f.number_field :snijmaat
+      %td.vloeren
+        = f.select :ondervloer, ["zandcement", "anhydriet", "tegels", "hout"]
+      %td.vloeren
+        = f.text_field :legrichting
       %td.gordijnen
         = f.number_field :strakke_hoogte_maat, :class => "calculation_strakke_hoogte_maat"
       %td.gordijnen
@@ -32,7 +38,7 @@
         = f.text_field :bocht_type
       %td.gordijnen
         = f.text_field :bocht_maat
-      %td.vouwgordijnen.gordijnen
+      %td.gordijnen
         = f.select :montage, ["wand", "plafond", "dagkant"]
       %td.vouwgordijnen
         = f.label :bediening, "Links", :value => "true"
@@ -41,9 +47,21 @@
         = f.label :bediening, "Rechts", :value => "false"
         = f.radio_button :bediening, false, :class => "radio_button"
       %td.vouwgordijnen
-        = f.number_field :montage_hoogte
+        = f.text_field :type
+      %td.vouwgordijnen
+        = f.text_field :pakket
+      %td.vouwgordijnen
+        = f.select :koof, ["IDD", "ODD", "retour links", "retour rechts", "rondom"]
+      %td.vouwgordijnen
+        = f.select :zijgeleiding, ["ja", "nee"]
+      %td.vouwgordijnen
+        = f.select :contra_rolend, ["ja", "nee"]
+      %td.vouwgordijnen
+        = f.select :raam_montage, ["wand", "plafond", "dagkant", "IDD", "ODD"]
       %td.vouwgordijnen.gordijnen
         = f.select :plaatsing, ["beton", "steen", "gips", "hout", "metaal"]
+      %td.vouwgordijnen
+        = f.number_field :montage_hoogte
       
       %td.actions
         = link_to_remove_association "Verwijder", f

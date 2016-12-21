@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220165212) do
+ActiveRecord::Schema.define(version: 20161221085420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,11 @@ ActiveRecord::Schema.define(version: 20161220165212) do
     t.string   "ondervloer"
     t.string   "legrichting"
     t.string   "type_roede"
+    t.string   "pakket"
+    t.string   "zijgeleiding"
+    t.string   "contra_rolend"
+    t.string   "koof"
+    t.string   "raam_montage"
   end
 
   add_index "calculations", ["vloer_id"], name: "index_calculations_on_vloer_id", using: :btree
