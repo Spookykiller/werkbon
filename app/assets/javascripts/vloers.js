@@ -24,10 +24,10 @@ $(document).on('turbolinks:load', function() {
             $('.item_totaal_prijs').css('color', 'white');
             $('.item_totaal_arbeid').css('color', 'white');
         } else {
+            $('#werkbon_totale_prijs').css('color', 'black');
             $('.item_artikel_prijs').css('color', 'black');
             $('.item_totaal_prijs').css('color', 'black');
             $('.item_totaal_arbeid').css('color', 'black');
-            $('#werkbon_totale_prijs').css('color', 'black');
         }
     });
     
