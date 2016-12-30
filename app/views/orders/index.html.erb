@@ -20,8 +20,8 @@
             <th>Acties</th>
         </tr>
     </thead>
-    <% @orders.each do |order| %>
-      <tbody>
+    <tbody>
+        <% @orders.each do |order| %>
           <tr>
               <td class="index"><%= order.project_naam %></td>
               <td class="index"><%= order.project_nummer %></td>
@@ -45,8 +45,8 @@
               <%# link_to "Print", print_order_path(order) %>
               </td>
           </tr>
-      </tbody>
-    <% end %>
+        <% end %>
+    </tbody>
 </table>
 <br>
 <div>

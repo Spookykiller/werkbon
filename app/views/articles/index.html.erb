@@ -1,29 +1,29 @@
 <table border="1" style="width:100%">
-      <thead>
-        <tr>
-            <th>Omschrijving</th>
-            <th>Prijs</th>
-            <th>Eenheid</th>
-            <th>Acties</th>
-        </tr>
-      </thead>
+  <thead>
+    <tr>
+      <th>Omschrijving</th>
+      <th>Prijs</th>
+      <th>Eenheid</th>
+      <th>Acties</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @articles.each do |article| %>
-      <tbody>
-          <tr>
-            <td class="index"><%= article.omschrijving %></td>
-            <td class="index">€ <%= article.prijs %></td>
-            <td class="index"><%= article.eenheid %></td>
-            <td class="center">
-                <%= link_to edit_article_path(article) do %>
-                  <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
-                <% end %>
-                <%= link_to article_path(article), method: :delete, data: { confirm: "Weet je zeker dat je deze article wilt verwijderen" } do %>
-                  <img src="/images/delete.png" alt="Delete" class="edit_icon">
-                <% end %>
-            </td>
-          </tr>
-      </tbody>
+      <tr>
+        <td class="index"><%= article.omschrijving %></td>
+        <td class="index">€ <%= article.prijs %></td>
+        <td class="index"><%= article.eenheid %></td>
+        <td class="center">
+            <%= link_to edit_article_path(article) do %>
+              <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+            <% end %>
+            <%= link_to article_path(article), method: :delete, data: { confirm: "Weet je zeker dat je deze article wilt verwijderen" } do %>
+              <img src="/images/delete.png" alt="Delete" class="edit_icon">
+            <% end %>
+        </td>
+      </tr>
     <% end %>
+  </tbody>
 </table>
 <br>
 <div>

@@ -6,7 +6,7 @@
 <br>
 
 <table border="1" style="width:100%">
-      <thead>
+    <thead>
         <tr>
             <th colspan="2">Status</th>
             <th>Werkbontype</th>
@@ -15,10 +15,10 @@
             <th>Ingevuld door</th>
             <th>Acties</th>
         </tr>
-      </thead>
-    <% @vloers.each do |vloer| %>
-      <tbody>
-          <tr>
+    </thead>
+    <tbody>
+        <% @vloers.each do |vloer| %>
+            <tr>
               <td class="index">
                 <% if vloer.status == 0 %>
                     <img src="/images/offerte.png" alt="Offerte status" class="edit_icon">
@@ -64,9 +64,9 @@
               <%= link_to "Duplicate", duplicate_order_vloer_path(@order, vloer) %>
               <%= link_to "Print", print_order_vloer_path(@order, vloer) %>
               </td>
-          </tr>
-      </tbody>
-    <% end %>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
 <br>
 <div>
