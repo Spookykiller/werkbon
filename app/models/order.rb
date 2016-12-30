@@ -7,4 +7,8 @@ class Order < ActiveRecord::Base
     validates :oplevering, presence: true
     validates :email, presence: true
     validates :contactpersoon, presence: true
+    
+    def self.search(query)
+      where("project_naam like ?", "%#{query}%") 
+    end
 end

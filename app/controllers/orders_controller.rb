@@ -5,7 +5,11 @@ class OrdersController < ApplicationController
     helper_method :sort_column, :sort_direction
 
     def index
-        @orders = Order.order(sort_column + " " + sort_direction)
+        if params[:search]
+            @orders = Order.search(params[:search]).order("created_at DESC")
+        else
+            @orders = Order.order(sort_column + " " + sort_direction)
+        end
     end
     
     def new
