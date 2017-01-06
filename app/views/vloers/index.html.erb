@@ -8,6 +8,7 @@
 <table border="1" style="width:100%">
     <thead>
         <tr>
+            <th colspan="2">Status</th>
             <th>Werkbontype</th>
             <th>Organisatie</th>
             <th>Datum</th>
@@ -18,6 +19,24 @@
     <tbody>
         <% @vloers.each do |vloer| %>
             <tr>
+                <td class="index">
+                <% if vloer.status == 0 %>
+                    <img src="/images/offerte.png" alt="Offerte status" class="edit_icon">
+                <% elsif vloer.status == 1 %>
+                    <img src="/images/meting.png" alt="Meting status" class="edit_icon">
+                <% elsif vloer.status == 2 %>
+                    <img src="/images/definitief.png" alt="Definitief status" class="edit_icon">
+                <% end %>
+              </td>              
+              <td class="index">
+                <% if vloer.status == 0 %>
+                    Offerte
+                <% elsif vloer.status == 1 %>
+                    Meting
+                <% elsif vloer.status == 2 %>
+                    Definitief
+                <% end %>
+              </td>
               <td class="index">
                   <%= vloer.werkbon_type %>
               </td>

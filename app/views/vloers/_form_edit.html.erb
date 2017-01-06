@@ -12,6 +12,9 @@
             <%= f.label :werkbon_type, 'Werkbon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.select :werkbon_type, ['Gordijnen', 'Vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12', id: 'werkbon_type' %><br>
             
+            <%= f.label :status, 'Status', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.select(:status,{ "Offerte" => 0, "Meting" => 1, "Definitief" => 2}) %><br>
+            
             <%#= f.label :status, 'Status', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%#= f.select(:status,{"Offerte 0" => 0, "Klaar voor meting, 1" => 1, "Gemeten, 2" => 2, "Akkoord, 3" => 3, "Gereed, 4" => 4, "Besteld, 5" => 5}) %><br>
             
