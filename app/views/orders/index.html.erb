@@ -11,11 +11,11 @@
 <table border="1" style="width:100%">
     <thead>
         <tr>
+            <th colspan="2"><%= sortable "status", "Status" %></th>
             <th><%= sortable "project_naam", "Projectnaam" %></th>
             <th><%= sortable "project_nummer", "Projectnummer" %></th>
             <th><%= sortable "inmeetdatum", "Inmeetdatum" %></th>
             <th><%= sortable "contactpersoon", "Contactpersoon" %></th>
-            <th><%= sortable "email", "Email" %></th>
             <th>Nieuwe werkbon</th>
             <th>Acties</th>
         </tr>
@@ -23,27 +23,44 @@
     <tbody>
         <% @orders.each do |order| %>
           <tr>
-              <td class="index"><%= order.project_naam %></td>
-              <td class="index"><%= order.project_nummer %></td>
-              <td class="index"><%= order.inmeetdatum %></td>
-              <td class="index"><%= order.contactpersoon %></td>
-              <td class="index"><%= order.email %></td>
-              <td class="index">
+            <td class="index">
+                <% if order.status == 0 %>
+                    <img src="/images/offerte.png" alt="Offerte status" class="edit_icon">
+                <% elsif order.status == 1 %>
+                    <img src="/images/meting.png" alt="Meting status" class="edit_icon">
+                <% elsif order.status == 2 %>
+                    <img src="/images/definitief.png" alt="Definitief status" class="edit_icon">
+                <% end %>
+            </td>
+            <td class="index">
+                <% if order.status == 0 %>
+                    Offerte
+                <% elsif order.status == 1 %>
+                    Meting
+                <% elsif order.status == 2 %>
+                    Definitief
+                <% end %>
+            </td>    
+            <td class="index"><%= order.project_naam %></td>
+            <td class="index"><%= order.project_nummer %></td>
+            <td class="index"><%= order.inmeetdatum %></td>
+            <td class="index"><%= order.contactpersoon %></td>
+            <td class="index">
                 <%= link_to order_vloers_path(order) do %> 
                     Werkbonnen
                     <img src="/images/search-icon.png" alt="Show" class="edit_icon">
                 <% end %>
-              </td>
-              <td class="center">
-                 <%= link_to edit_order_path(order) do %>
-                  <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
-              <% end %>
-              <%= link_to order_path(order), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
-                  <img src="/images/delete.png" alt="Delete" class="edit_icon">
-              <% end %>
-              <%= link_to "Duplicate", duplicate_order_path(order) %>
-              <%# link_to "Print", print_order_path(order) %>
-              </td>
+            </td>
+            <td class="center">
+                <%= link_to edit_order_path(order) do %>
+                    <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+                <% end %>
+                <%= link_to order_path(order), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+                    <img src="/images/delete.png" alt="Delete" class="edit_icon">
+                <% end %>
+                <%= link_to "Duplicate", duplicate_order_path(order) %>
+                <%# link_to "Print", print_order_path(order) %>
+            </td>
           </tr>
         <% end %>
     </tbody>

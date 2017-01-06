@@ -76,7 +76,7 @@ $(document).on('turbolinks:load', function() {
         });
                 
     }).fail(function(fail) {
-        alert('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
+        console.log('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
     });
     
     // Leverancier
@@ -94,7 +94,7 @@ $(document).on('turbolinks:load', function() {
         });
                 
     }).fail(function() {
-        alert('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
+        console.log('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
     });
     
     

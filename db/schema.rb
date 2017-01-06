@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221085420) do
+ActiveRecord::Schema.define(version: 20170106141852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20161221085420) do
     t.decimal  "montage_hoogte"
     t.string   "plaatsing"
     t.boolean  "bed"
-    t.string   "type"
+    t.string   "raam_type"
     t.boolean  "uitlijnen"
     t.integer  "vloer_id"
     t.datetime "created_at",          null: false
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20161221085420) do
     t.datetime "updated_at",                    null: false
     t.string   "navigatie_adres"
     t.string   "inmeetdatum"
+    t.integer  "status"
   end
 
   create_table "regels", force: :cascade do |t|
@@ -188,6 +189,7 @@ ActiveRecord::Schema.define(version: 20161221085420) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "order_id"
+    t.boolean  "backup"
   end
 
   add_index "vloers", ["order_id"], name: "index_vloers_on_order_id", using: :btree
