@@ -6,7 +6,7 @@ $(document).ajaxSend(function(event, request, settings) {
   settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 });
 
-$(document).on('page:load', function(){
+$(document).on('turbolinks:load', function(){
     selected_values();
     
     $('input').click(function(){
