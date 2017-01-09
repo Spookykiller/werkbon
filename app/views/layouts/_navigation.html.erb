@@ -12,7 +12,6 @@
           <li>Gebruiker instellingen</li>
         <% end %>
       <% end %>
-      <% if current_user.role == 0 %>
         <%= link_to articles_path do %>
           <li>Artikelen</li>
         <% end %>
@@ -22,7 +21,6 @@
         <%= link_to leveranciers_path do %>
           <li>Leveranciers</li>
         <% end %>
-      <% end %>
       <%= link_to orders_path do %>
         <li>Orders</li>
       <% end %>
