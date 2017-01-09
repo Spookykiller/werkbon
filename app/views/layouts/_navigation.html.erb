@@ -11,18 +11,20 @@
         <%= link_to edit_user_registration_path do %>
           <li>Gebruiker instellingen</li>
         <% end %>
-      <% end %>
-        <%= link_to articles_path do %>
-          <li>Artikelen</li>
+        <% if current_user.role == 0 %>
+          <%= link_to articles_path do %>
+            <li>Artikelen</li>
+          <% end %>
+          <%= link_to regels_path do %>
+            <li>Regels</li>
+          <% end %>
+          <%= link_to leveranciers_path do %>
+            <li>Leveranciers</li>
+          <% end %>
         <% end %>
-        <%= link_to regels_path do %>
-          <li>Regels</li>
+        <%= link_to orders_path do %>
+          <li>Orders</li>
         <% end %>
-        <%= link_to leveranciers_path do %>
-          <li>Leveranciers</li>
-        <% end %>
-      <%= link_to orders_path do %>
-        <li>Orders</li>
       <% end %>
     </div>
   </ul>
