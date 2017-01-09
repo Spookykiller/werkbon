@@ -1,0 +1,87 @@
+<div class="center">
+    <h3>Werkbonnen van `<%= @order.project_naam %>` order</h3>
+</div>
+
+<br>
+<br>
+
+<% @order_states.each do |order_state| %>
+
+    <% if order_state.status == 0 && (current_user.role == 0 || current_user.role == 1) %>
+        <h2>Offerte werkbonnen</h2>
+        <br>
+        <table border="1" style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="2">Type</th>
+                    <th>Naam</th>
+                    <th>Werkbontype</th>
+                    <th>Organisatie</th>
+                    <th>Datum</th>
+                    <th>Ingevuld door</th>
+                    <th colspan="3">Acties</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+               <%= render :partial => 'table', :collection => @offerte_werkbonnen, :as => :vloer, locals: {order_state: order_state}  %>
+            </tbody>
+        </table>
+        <br>
+        
+    <% elsif order_state.status == 1 && (current_user.role == 0 || current_user.role == 1 || current_user.role == 2)%>
+        
+        <h2>Meting werkbonnen</h2>
+        <br>
+        <table border="1" style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="2">Type</th>
+                    <th>Naam</th>
+                    <th>Werkbontype</th>
+                    <th>Organisatie</th>
+                    <th>Datum</th>
+                    <th>Ingevuld door</th>
+                    <th colspan="3">Acties</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+               <%= render :partial => 'table', :collection => @meting_werkbonnen, :as => :vloer, locals: {order_state: order_state} %>
+            </tbody>
+        </table>
+        <br>
+        
+    <% elsif order_state.status == 2 && (current_user.role == 0 || current_user.role == 3 || current_user.role == 4 || current_user.role == 5)%>    
+        
+        <h2>Definitieve werkbonnen</h2>
+        <br>
+        <table border="1" style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="2">Type</th>
+                    <th>Naam</th>
+                    <th>Werkbontype</th>
+                    <th>Organisatie</th>
+                    <th>Datum</th>
+                    <th>Ingevuld door</th>
+                    <th colspan="3">Acties</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render :partial => 'table', :collection => @definitieve_werkbonnen, :as => :vloer, locals: {order_state: order_state}  %>
+            </tbody>
+        </table>
+        <br>
+    <% end %>    
+        
+<% end %>
+
+<% if current_user.role == 0 || current_user.role == 1 %>
+    <div>
+        <%= link_to new_order_order_state_vloer_path(@order, @order_states.first) do %>
+            <button class="new_werkbon">Nieuwe offerte +</button>
+        <% end %>
+    </div>
+<% end %>    

@@ -13,7 +13,7 @@
       %td.vloeren
         = f.number_field :snijmaat
       %td.vloeren
-        = f.select :ondervloer, ["zandcement", "anhydriet", "tegels", "hout"]
+        = f.select :ondervloer, ["zandcement", "anhydriet", "tegels", "hout"], :include_blank => true
       %td.vloeren
         = f.text_field :legrichting
       %td.gordijnen
@@ -27,13 +27,13 @@
         = f.label :bmdm, "DM", :value => "false"
         = f.radio_button :bmdm, false, :class => "radio_button"
       %td.gordijnen
-        = f.select :stuks, ["links", "midden", "rechts", "stel"]
+        = f.select :stuks, ["links", "midden", "rechts", "stel"], :include_blank => true
       %td.gordijnen
-        = f.select :hoofdje, [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
+        = f.select :hoofdje, [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0], :include_blank => true
       %td.gordijnen
         = f.number_field :rail_lengte
       %td.gordijnen
-        = f.select :type_roede, ["wand tot wand", "vrijstaand", "links vrij", "rechts vrij"]
+        = f.select :type_roede, ["wand tot wand", "vrijstaand", "links vrij", "rechts vrij"], :include_blank => true
       %td.gordijnen
         = f.text_field :bocht_type
       %td.gordijnen
@@ -45,21 +45,21 @@
         = f.label :bediening, "Rechts", :value => "false"
         = f.radio_button :bediening, false, :class => "radio_button"
       %td.gordijnen.vouwgordijnen
-        = f.select :montage, ["wand", "plafond", "dagkant"]
+        = f.select :montage, ["wand", "plafond", "dagkant"], :include_blank => true
       %td.raam
         = f.text_field :raam_type
       %td.raam
         = f.text_field :pakket
       %td.raam
-        = f.select :koof, ["IDD", "ODD", "retour links", "retour rechts", "rondom"]
+        = f.select :koof, ["IDD", "ODD", "retour links", "retour rechts", "rondom"], :include_blank => true
       %td.raam
-        = f.select :zijgeleiding, ["ja", "nee"]
+        = f.select :zijgeleiding, ["ja", "nee"], :include_blank => true
       %td.raam
-        = f.select :contra_rolend, ["ja", "nee"]
+        = f.select :contra_rolend, ["ja", "nee"], :include_blank => true
       %td.raam
-        = f.select :raam_montage, ["wand", "plafond", "dagkant", "IDD", "ODD"]
+        = f.select :raam_montage, ["wand", "plafond", "dagkant", "IDD", "ODD"], :include_blank => true
       %td.vouwgordijnen.gordijnen.raam
-        = f.select :plaatsing, ["beton", "steen", "gips", "hout", "metaal"]
+        = f.select :plaatsing, ["beton", "steen", "gips", "hout", "metaal"], :include_blank => true
       %td.vouwgordijnen.raam
         = f.number_field :montage_hoogte
       

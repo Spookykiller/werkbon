@@ -1,19 +1,19 @@
-<%= form_for [@order, @vloer], :html => {:class =>  'form-horizontal form-label-left' } do |f| %>
-    <% if @order.errors.any? %>
-        <h3><%= pluralize(@order.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h3>
+<%= form_for [@order, @order_state, @vloer], :html => {:class =>  'form-horizontal form-label-left' } do |f| %>
+    <% if @vloer.errors.any? %>
+        <h3><%= pluralize(@vloer.errors.count, "error")%> zorgde ervoor dat de klant niet opgeslagen kon worden.</h3>
         <ul>
-            <% @order.errors.full_messages.each do |msg| %>
+            <% @vloer.errors.full_messages.each do |msg| %>
                 <li><p><%= msg %></p></li>
             <% end %>
         </ul>
     <% end %>
     <div id="general_info">
         <div id="left">
+            <%= f.label :name, 'Werkbon naam', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
+            <%= f.text_field :name, class: 'form-control col-md-7 col-xs-12' %><br>
+            
             <%= f.label :werkbon_type, 'Werkbon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.select :werkbon_type, ['', 'Gordijnen', 'Vouwgordijnen', 'Raamdecoratie', 'Vloeren'], class: 'form-control col-md-7 col-xs-12', id: 'werkbon_type' %><br>
-            
-            <%= f.label :status, 'Status', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.select(:status,{ "Offerte" => 0, "Meting" => 1, "Definitief" => 2}) %><br>
             
             <%#= f.label :status, @status_label, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%#= f.check_box :status, {class: 'form-control col-md-7 col-xs-12'}, @status_int %><br>
@@ -53,7 +53,7 @@
     <div class="center">
         <%= f.submit 'Opslaan', :class => 'new_werkbon' %>
         <br>
-        <%= link_to 'Annuleren', order_vloers_path, :class => 'annuleren' %>
+        <%= link_to 'Annuleren', order_order_state_vloers_path, :class => 'annuleren' %>
     </div>
     
 <% end %>

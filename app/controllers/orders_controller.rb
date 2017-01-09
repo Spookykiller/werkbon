@@ -22,6 +22,9 @@ class OrdersController < ApplicationController
         if @order.save
             flash[:notice] = "De order is opgeslagen!"
             redirect_to action: "index"
+            
+            # nieuwe orderstatus van de order aanmaken en deze status intialiseren op offerte (0)
+            OrderState.create(:status => 0, :order_id => @order.id)
         else
             render 'new'
             flash[:notice] = "Oh nee! De order is niet opgeslagen."
@@ -68,7 +71,7 @@ class OrdersController < ApplicationController
     end
     
     def find_order
-       @order = Order.find(params[:id]) 
+        @order = Order.find(params[:id]) 
     end
     
     def sort_column

@@ -7,6 +7,7 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $(document).on('turbolinks:load', function(){
+    console.log("It works on each visit!")
     selected_values();
     
     $('input').click(function(){

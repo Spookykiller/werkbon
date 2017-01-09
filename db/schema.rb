@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106141852) do
+ActiveRecord::Schema.define(version: 20170109170854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,24 @@ ActiveRecord::Schema.define(version: 20170106141852) do
     t.integer  "sequence_id"
   end
 
+  create_table "order_states", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "order_states", ["order_id"], name: "index_order_states_on_order_id", using: :btree
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "order_statuses", ["order_id"], name: "index_order_statuses_on_order_id", using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.string   "naam"
     t.string   "project_nummer"
@@ -172,6 +190,7 @@ ActiveRecord::Schema.define(version: 20170106141852) do
     t.datetime "updated_at",                          null: false
     t.integer  "failed_attempts",        default: 0,  null: false
     t.datetime "locked_at"
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -188,16 +207,18 @@ ActiveRecord::Schema.define(version: 20170106141852) do
     t.integer  "status",           default: 0
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "order_id"
     t.boolean  "backup"
+    t.integer  "order_states_id"
+    t.string   "name"
   end
 
-  add_index "vloers", ["order_id"], name: "index_vloers_on_order_id", using: :btree
+  add_index "vloers", ["order_states_id"], name: "index_vloers_on_order_states_id", using: :btree
 
   add_foreign_key "calculations", "vloers"
   add_foreign_key "dropdowns", "regels"
   add_foreign_key "items", "vloers"
   add_foreign_key "leverancier_regels", "leveranciers"
+  add_foreign_key "order_states", "orders"
+  add_foreign_key "order_statuses", "orders"
   add_foreign_key "second_dropdowns", "regels"
-  add_foreign_key "vloers", "orders"
 end

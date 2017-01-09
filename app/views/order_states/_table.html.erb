@@ -1,0 +1,82 @@
+<tr>
+  <td class="index">
+    <% if vloer.status == 0 %>
+        <img src="/images/offerte.png" alt="Offerte status" class="edit_icon">
+    <% elsif vloer.status == 1 %>
+        <img src="/images/offerte.png" alt="Offerte (klaar om in te meten) status" class="edit_icon">
+    <% elsif vloer.status == 2 %>
+        <img src="/images/meting.png" alt="Meting ingemeten" class="edit_icon">
+    <% elsif vloer.status == 3 %>
+        <img src="/images/definitief.png" alt="Meting Akkoord" class="edit_icon">
+    <% elsif vloer.status == 4 %>
+        <img src="/images/definitief.png" alt="Meting gereerd voor bestellen" class="edit_icon">
+    <% elsif vloer.status == 5 %>
+        <img src="/images/definitief.png" alt="Meting besteld" class="edit_icon">
+    <% end %>
+  </td>              
+  <td class="index">
+    <% if vloer.status == 0 %>
+        Offerte
+    <% elsif vloer.status == 1 %>
+        Offerte (gaan meten)
+    <% elsif vloer.status == 2 %>
+        Meting
+    <% elsif vloer.status == 3 %>
+        Meting (akkoord)
+    <% elsif vloer.status == 4 %>
+        Meting (gereerd voor bestellen)
+    <% elsif vloer.status == 5 %>
+        Meting (besteld)
+    <% end %>
+  </td>
+  <td class="index">
+      <%= vloer.name %>
+  </td>
+  <td class="index">
+      <%= vloer.werkbon_type %>
+  </td>
+  <td class="index">
+    <% if vloer.organisatie == 1 %>
+        T4P
+    <% elsif vloer.organisatie == 2 %>
+        T4L WW
+    <% elsif vloer.organisatie == 3 %>
+        T4L A'F
+    <% elsif vloer.organisatie == 4 %>
+        T4L A'dam
+    <% elsif vloer.organisatie == 5 %>
+        T4L Breda
+    <% end %>
+  </td>
+  <td class="index"><%= vloer.datum %></td>
+  <td class="index"><%= vloer.werkvoorbereider %></td>
+  <td class="index">
+    <%= link_to "Print", print_order_order_state_vloer_path(@order, order_state.id, vloer) %>
+  </td>
+  <% if !vloer.backup? %>
+    <% if vloer.status < 4 %>
+        <td class="index">
+          <%= link_to edit_order_order_state_vloer_path(@order, order_state, vloer) do %>
+              <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
+          <% end %>
+        </td>
+        <td class="index">  
+          <%= link_to order_order_state_vloer_path(@order, order_state, vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+              <img src="/images/delete.png" alt="Delete" class="edit_icon">
+          <% end %>
+        </td>
+    <% else %>
+        <td class="index" colspan="2"></td>
+    <% end %>
+    <td class="index"> 
+      <%= link_to duplicate_order_order_state_vloer_path(@order, order_state, vloer) do %>
+        <button type="button" class="btn btn-success"><%= @fase_veld %></button>
+      <% end %>
+    </td>
+  <% else %>
+    <td class="index" colspan="2"></td>
+    <td class="index"> 
+        <button type="button" class="btn btn-warning">Backup versie</button>
+    </td>
+  <% end %>
+</tr>

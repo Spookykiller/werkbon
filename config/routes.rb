@@ -6,10 +6,12 @@ Rails.application.routes.draw do
       get 'duplicate'
       get 'print'
     end
-    resources :vloers, except: :show do
-      member do
-        get 'duplicate'
-        get 'print'
+    resources :order_states, only: [:index, :show] do 
+      resources :vloers, except: :show do
+        member do
+          get 'duplicate'
+          get 'print'
+        end
       end
     end
   end

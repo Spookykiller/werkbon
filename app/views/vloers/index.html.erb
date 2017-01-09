@@ -1,5 +1,5 @@
 <div class="center">
-    <h3>Werkbonnen van `<%= @order.project_naam %>` order</h3>
+    <h3>Werkbonnen van `<%= @order_state.order.project_naam %>` order</h3>
 </div>
 
 <br>
@@ -55,14 +55,14 @@
               </td>
               <td class="index"><%= vloer.datum %></td>
               <td class="index"><%= vloer.werkvoorbereider %></td>
-              <td class="center"><%= link_to edit_order_vloer_path(@order, vloer) do %>
+              <td class="center"><%= link_to edit_order_order_state_vloer_path(@order, @order_state, vloer) do %>
                   <img src="/images/pencil-edit-button.png" alt="Edit" class="edit_icon">
               <% end %>
-              <%= link_to order_vloer_path(@order, vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
+              <%= link_to order_order_state_vloer_path(@order, @order_state, vloer), method: :delete, data: { confirm: "Weet je zeker dat je deze werkbon wilt verwijderen" } do %>
                   <img src="/images/delete.png" alt="Delete" class="edit_icon">
               <% end %>
-              <%= link_to "Volgende_fase", duplicate_order_vloer_path(@order, vloer) %>
-              <%= link_to "Print", print_order_vloer_path(@order, vloer) %>
+              <%= link_to "Volgende_fase", duplicate_order_order_state_vloer_path(@order, @order_state, vloer) %>
+              <%= link_to "Print", print_order_order_state_vloer_path(@order, @order_state, vloer) %>
               </td>
             </tr>
         <% end %>
@@ -70,7 +70,7 @@
 </table>
 <br>
 <div>
-    <%= link_to new_order_vloer_path do %>
+    <%= link_to new_order_order_state_vloer_path do %>
         <button class="new_werkbon">Nieuwe werkbon +</button>
     <% end %>
 </div>

@@ -1,5 +1,5 @@
 class Vloer < ActiveRecord::Base
-    belongs_to :order
+    belongs_to :order_state
     has_many :items, dependent: :destroy
     has_many :regels
     has_many :calculations, dependent: :destroy
