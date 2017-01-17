@@ -46,6 +46,24 @@ $( document ).ready(function() {
         getWerkbonTypeAfter();
         update_subtotal();
     });
+    
+        // Leverancier
+    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
+        
+        var arr = data;
+        var lang = [];
+        var obj = JSON.parse(arr);
+        $.each(obj, function() {
+            lang.push(this['CreditorName'])
+        });
+
+        $(".leverancier_input").autocomplete({
+            source: lang
+        });
+                
+    }).fail(function() {
+        console.log('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
+    });
 
 });
 
