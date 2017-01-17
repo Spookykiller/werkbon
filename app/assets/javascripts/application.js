@@ -12,12 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery-ui
 //= require cocoon
 //= require toastr
 
-$(document).on('turbolinks:load', function() {
+$( document ).ready(function() {
     $(".add_items").click();
     $(".add_items").hide();
 });

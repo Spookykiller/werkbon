@@ -89,11 +89,19 @@ class VloersController < ApplicationController
     end
     
     def print
-        @items = @vloer.items.order("created_at ASC")
+        if((@vloer.status % 2) === 0)
+            @items = @vloer.items.order("created_at ASC")
+        else 
+            @items = @vloer.items.order("created_at DESC")
+        end
     end
     
     def edit
-        @items = @vloer.items.order("created_at ASC")
+        if((@vloer.status % 2) === 0)
+            @items = @vloer.items.order("created_at ASC")
+        else 
+            @items = @vloer.items.order("created_at DESC")
+        end
     end
     
     def update
