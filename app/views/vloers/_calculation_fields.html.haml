@@ -5,19 +5,19 @@
         = f.text_field :ruimte, :class => "calculation_ruimte"
         = f.hidden_field :werkbon
       %td.raam.vouwgordijnen.gordijnen.vloeren
-        = f.number_field :aantal, :class => "calculation_number"
+        = f.number_field :aantal, :class => "calculation_number", :value => (number_with_precision(f.object.aantal, :precision => 0))
       %td.raam.vouwgordijnen.gordijnen.vloeren
-        = f.number_field :breedte, :class => "calculation_breedte"
+        = f.number_field :breedte, step: 1, :class => "calculation_breedte", :value => (number_with_precision(f.object.breedte, :precision => 0))
       %td.raam.vouwgordijnen.gordijnen.vloeren
-        = f.number_field :hoogte, :class => "calculation_ruimte"
+        = f.number_field :hoogte, :class => "calculation_ruimte", :value => (number_with_precision(f.object.hoogte, :precision => 0))
       %td.vloeren
-        = f.number_field :snijmaat
+        = f.number_field :snijmaat, :value => (number_with_precision(f.object.snijmaat, :precision => 0))
       %td.vloeren
         = f.select :ondervloer, ["zandcement", "anhydriet", "tegels", "hout"], :include_blank => true
       %td.vloeren
         = f.text_field :legrichting
       %td.gordijnen
-        = f.number_field :strakke_hoogte_maat, :class => "calculation_strakke_hoogte_maat"
+        = f.number_field :strakke_hoogte_maat, :value => (number_with_precision(f.object.strakke_hoogte_maat, :precision => 0))
       %td.vouwgordijnen.gordijnen
         = f.text_field :knipmaat
       %td.raam.vouwgordijnen
@@ -31,11 +31,11 @@
       %td.gordijnen
         = f.select :hoofdje, [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0], :include_blank => true
       %td.gordijnen
-        = f.number_field :rail_lengte
+        = f.number_field :rail_lengte, :value => (number_with_precision(f.object.rail_lengte, :precision => 0))
       %td.gordijnen
         = f.select :type_roede, ["wand tot wand", "vrijstaand", "links vrij", "rechts vrij"], :include_blank => true
       %td.gordijnen
-        = f.text_field :bocht_type
+        = f.select :bocht_type, ["A", "B", "C", "D", "E", "F", "G", "H", "S"], :include_blank => true
       %td.gordijnen
         = f.text_field :bocht_maat
       %td.raam.vouwgordijnen
@@ -44,10 +44,18 @@
       %td.raam.vouwgordijnen
         = f.label :bediening, "Rechts", :value => "false"
         = f.radio_button :bediening, false, :class => "radio_button"
-      %td.gordijnen.vouwgordijnen
-        = f.select :montage, ["wand", "plafond", "dagkant"], :include_blank => true
+      %td.raam
+        = f.label :tuimelkoord, "Links", :value => "true"
+        = f.radio_button :tuimelkoord, true, :class => "radio_button"
+      %td.raam
+        = f.label :tuimelkoord, "Rechts", :value => "false"
+        = f.radio_button :tuimelkoord, false, :class => "radio_button"
       %td.raam
         = f.text_field :raam_type
+      %td.vouwgordijnen.raam
+        = f.text_field :uitlijnen_met      
+      %td.gordijnen.vouwgordijnen
+        = f.select :montage, ["wand", "plafond", "dagkant"], :include_blank => true
       %td.raam
         = f.text_field :pakket
       %td.raam
@@ -61,7 +69,9 @@
       %td.vouwgordijnen.gordijnen.raam
         = f.select :plaatsing, ["beton", "steen", "gips", "hout", "metaal"], :include_blank => true
       %td.vouwgordijnen.raam
-        = f.number_field :montage_hoogte
+        = f.number_field :montage_hoogte, :value => (number_with_precision(f.object.montage_hoogte, :precision => 0))
+      %td.raam
+        = f.number_field :raam_prijs, :step => '0.01'
       
       %td.actions
         = link_to_remove_association "Verwijder", f

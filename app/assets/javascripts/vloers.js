@@ -7,9 +7,12 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $( document ).ready(function() {
-    console.log("It works on each visit!")
     $('input').click(function(){
-	    $(this).select();
+        update_subtotal();
+        selected_values();
+    });
+    
+    $('.new_werkbon').click(function(){
         update_subtotal();
         selected_values();
     });

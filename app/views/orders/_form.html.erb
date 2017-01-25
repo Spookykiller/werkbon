@@ -27,7 +27,7 @@
         
         <div id="right">
             <%= f.label :navigatie_adres, 'Navigatie adres', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :navigatie_adres, class: 'form-control col-md-7 col-xs-12' %><br>
+            <%= f.text_field :navigatie_adres, id: 'navigation_address', class: 'form-control col-md-7 col-xs-12' %><br>
             
             <%= f.label :telefoon, 'Telefoon', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :telefoon, class: 'form-control col-md-7 col-xs-12' %><br>
@@ -39,7 +39,7 @@
             <%= f.text_field :contactpersoon, class: 'form-control col-md-7 col-xs-12' %><br>
             
             <%= f.label :inmeetdatum, 'Inmeetdatum', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.text_field :inmeetdatum, class: 'form-control col-md-7 col-xs-12', id: 'datepicker' %><br>
+            <%= f.text_field :inmeetdatum, class: 'form-control col-md-7 col-xs-12' %><br>
 
             <%= f.label :oplevering, 'Opleveringsdatum', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
             <%= f.text_field :oplevering, class: 'form-control col-md-7 col-xs-12', id: 'datepicker1' %><br>

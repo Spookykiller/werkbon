@@ -8,7 +8,7 @@
 }
 
 .calculations input, .calculations select {
-    max-width: 100px;
+    width: 100%;
 }
 
 #general_info.radio_buttons {
@@ -91,7 +91,6 @@ label.col-xs-12 {
     #general_info input[type="radio"] {
         width: 80px;
     }
-    
         
     #left {
         width: 320px;
@@ -110,13 +109,11 @@ label.col-xs-12 {
     
     .form-label-left input {
         font-size: 10px;
-        width: 80px;
         height: 15px;
     }
     
     .form-label-left select {
         font-size: 10px;
-        width: 80px;
         height: 15px;
     }
     
@@ -177,26 +174,13 @@ label.col-xs-12 {
         background: none;
     }
     
-    .calculations .calculation_ruimte {
-        width: 50px;
-    }
-    
-    .calculations .calculation_ruimte label {
-        width: 50px;
-    }
-    
-    .calculations .calculation_breedte {
-        width: 50px;
-    }
-    
-    .calculations .calculation_breedte label {
-        width: 50px;
-    }
-    
     .calculations input {
         font-size: 10px;
-        width: 30px;
         height: 10px;
+    }
+    
+    .calculations input, .calculations select {
+        width: 100%;
     }
 
     .item_voorraad_actie {

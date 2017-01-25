@@ -14,7 +14,7 @@ class OrderStatesController < ApplicationController
             @fase_veld = "Volgende fase"
         elsif current_user.role == 1
             @offerte_werkbonnen = Vloer.where(:order_states_id => @order.order_states.first)
-            @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second, :status => 2)
+            @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second)
             @fase_veld = "Klaar voor meting/akkoord"
         elsif current_user.role == 2
             @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second, :status => 1)

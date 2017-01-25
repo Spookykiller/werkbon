@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
             @orders = Order.search(params[:search]).order("created_at DESC")
         else
             @orders = Order.order(sort_column + " " + sort_direction)
+            # @orders = Order.joins(:order_states).group("orders.id").having('count(order_id) > 0')
         end
     end
     

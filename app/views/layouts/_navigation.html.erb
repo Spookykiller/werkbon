@@ -4,13 +4,34 @@
       <%= link_to root_path do %>
         <img src="/images/Total4Projects.svg">
       <% end %>
+      
       <% if user_signed_in? %>
+        <li class="account">
+          <% case current_user.role%>
+          <% when 0 %>
+            Beheerder
+          <% when 1 %>
+            Shop
+          <% when 2 %>
+            Meting
+          <% when 3 %>
+            Administratie
+          <% when 4 %>
+            Bestelafdeling
+          <% when 5 %>
+            Planning
+          <% end %>
+        </li>
+        
+        <li>|</li>
+      
         <%= link_to destroy_user_session_path, :method => :delete do %>        
           <li>Uitloggen</li>
         <% end %>
         <%= link_to edit_user_registration_path do %>
           <li>Gebruiker instellingen</li>
         <% end %>
+
         <% if current_user.role == 0 %>
           <%= link_to articles_path do %>
             <li>Artikelen</li>
@@ -25,6 +46,7 @@
         <%= link_to orders_path do %>
           <li>Orders</li>
         <% end %>
+                
       <% end %>
     </div>
   </ul>

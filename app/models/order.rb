@@ -9,6 +9,6 @@ class Order < ActiveRecord::Base
     validates :contactpersoon, presence: true
     
     def self.search(query)
-      where("project_naam like ?", "%#{query}%") 
+      where("LOWER(project_naam) like ?", "%#{query}%") 
     end
 end

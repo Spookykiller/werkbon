@@ -100,7 +100,7 @@ $( document ).ready(function() {
     
     
     // Naam klant
-    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor2_AppConnectorGet.php", function( data2 ) {
         var arr = data2;
         var lang = [];
         var obj = JSON.parse(arr);
@@ -165,9 +165,9 @@ function getSibDat(obj, key, value, ukKeys) {
             var DebtorId = (dat[2]);
             $("#order_project_nummer").val(dat[3]);
             
-            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor2_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
-                getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr']);
+                getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr', 'AdressLine1_aflevering', 'AdressLine3_aflevering']);
             });
         }
     }
@@ -183,9 +183,9 @@ function getSibDatId(obj, key, value, ukKeys) {
             var DebtorId = (dat[2]);
             $("#order_project_naam").val(dat[3]);
             
-            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor_AppConnectorGet.php", function( data2 ) {
+            $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor2_AppConnectorGet.php", function( data2 ) {
                 var obj2 = JSON.parse(data2);
-                getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr']);
+                getSibDatDebtor(obj2, 'DebtorId', DebtorId, ['SearchName', 'AdressLine1', 'AdressLine3', 'AdressLine4', 'DebtorName', 'Email', 'TelNr', 'AdressLine1_aflevering', 'AdressLine3_aflevering']);
             });
         }
     }
@@ -207,6 +207,7 @@ function getSibDatKlant(obj, key, value, ukKeys) {
             $("#order_AdressLine4").val(dat2[3]);
             $("#order_email").val(dat2[5]);
             $("#order_telefoon").val(dat2[6]);
+            $("#navigation_address").val(dat2[7] + dat2[8]);
 
             $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/sample_AppConnectorGet.php", function( data ) {
                 var obj = JSON.parse(data);
@@ -232,6 +233,7 @@ function getSibDatDebtor(obj2, key, value, ukKeys) {
             $("#order_naam").val(dat2[4]);
             $("#order_email").val(dat2[5]);
             $("#order_telefoon").val(dat2[6]);
+            $("#navigation_address").val(dat2[7] + dat2[8]);
         }
     }
 }

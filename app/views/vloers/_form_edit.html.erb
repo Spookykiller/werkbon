@@ -27,7 +27,7 @@
             <%= f.text_field :werkvoorbereider, class: 'form-control col-md-7 col-xs-12' %><br>
 
             <%= f.label :totale_prijs, 'Totaal bedrag', class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
-            <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs' %><br>
+            <%= f.number_field :totale_prijs, class: 'form-control col-md-7 col-xs-12', id: 'werkbon_totale_prijs', :step => '0.01' %><br>
         </div>
     </div>
     

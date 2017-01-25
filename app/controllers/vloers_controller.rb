@@ -5,10 +5,6 @@ class VloersController < ApplicationController
     before_action :find_order_state, only: [:index, :new, :create, :print, :duplicate, :edit, :update, :destroy]
     before_action :find_order, only: [:index, :new, :create, :print, :duplicate, :edit, :update, :destroy]
 
-    def index
-        @vloers = Vloer.where(:order_states_id => @order_state)
-    end
-    
     def new
         @vloer = Vloer.new
         # leveranciers laden in volgorde van sequence_id (rijnummer)
@@ -91,16 +87,20 @@ class VloersController < ApplicationController
     def print
         if((@vloer.status % 2) === 0)
             @items = @vloer.items.order("created_at ASC")
+            @calculations = @vloer.calculations.order("created_at ASC")
         else 
             @items = @vloer.items.order("created_at DESC")
+            @calculations = @vloer.calculations.order("created_at DESC")        
         end
     end
     
     def edit
         if((@vloer.status % 2) === 0)
             @items = @vloer.items.order("created_at ASC")
+            @calculations = @vloer.calculations.order("created_at ASC")
         else 
             @items = @vloer.items.order("created_at DESC")
+            @calculations = @vloer.calculations.order("created_at DESC")        
         end
     end
     
@@ -117,13 +117,13 @@ class VloersController < ApplicationController
     
     def destroy
         @vloer.destroy
-        redirect_to action: "index"
+        redirect_to order_order_states_path(@order)
     end
     
     private
     
     def vloer_params
-        params.require(:vloer).permit(:name, :backup, :status, :order, :organisatie, :datum, :werkvoorbereider, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :ref_id, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :aantal, :breedte, :hoogte, :pakket, :zijgeleiding, :contra_rolend, :strakke_hoogte_maat, :bmdm, :stuks, :hoofdje, :rail_lengte, :type_roede, :montage, :bediening, :montage_hoogte, :plaatsing, :bed, :raam_type, :uitlijnen, :knipmaat, :koof, :raam_montage, :bocht_type, :bocht_maat, :snijmaat, :ondervloer, :legrichting, :_destroy] )
+        params.require(:vloer).permit(:name, :backup, :status, :order, :organisatie, :datum, :werkvoorbereider, :werkbon_type, :totale_prijs, :totale_arbeid, :bijzonderheden, items_attributes: [:id, :ref_id, :hoeveelheid, :omschrijving, :var1, :var1_name, :var2, :var2_name, :var3, :var3_name, :var4, :var4_name, :article_prijs, :prijs, :totale_prijs, :totale_arbeid, :werkbon_type, :_destroy], calculations_attributes: [:id, :werkbon, :ruimte, :aantal, :breedte, :hoogte, :pakket, :zijgeleiding, :contra_rolend, :strakke_hoogte_maat, :bmdm, :stuks, :hoofdje, :rail_lengte, :type_roede, :montage, :bediening, :montage_hoogte, :plaatsing, :bed, :raam_type, :uitlijnen, :knipmaat, :koof, :raam_montage, :bocht_type, :bocht_maat, :snijmaat, :ondervloer, :uitlijnen_met, :tuimelkoord, :raam_prijs, :ondergrond, :voorstrijken, :legrichting, :_destroy] )
     end
     
     def find_vloer

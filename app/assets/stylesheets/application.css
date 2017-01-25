@@ -282,3 +282,16 @@ label.col-xs-12 {
     cursor: default;
 }
 
+.btn-info {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #2aabd2;
+}
+
+table {
+    table-layout: auto;
+}
+
+li.account {
+    color: #0063a2;
+}

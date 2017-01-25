@@ -53,7 +53,17 @@
   <td class="index">
     <%= link_to "Print", print_order_order_state_vloer_path(@order, order_state.id, vloer) %>
   </td>
-  <% if !vloer.backup? %>
+  <% if vloer.backup? %>
+    <td class="index" colspan="2"></td>
+    <td class="index"> 
+        <button type="button" class="btn btn-warning">Backup versie</button>
+    </td>
+  <% elsif (current_user.role == 1 && vloer.status == 1) %> 
+    <td class="index" colspan="2"></td>
+    <td class="index"> 
+        <button type="button" class="btn btn-info">Read-only</button>
+    </td>
+  <% else %>
     <% if vloer.status < 4 %>
         <td class="index">
           <%= link_to edit_order_order_state_vloer_path(@order, order_state, vloer) do %>
@@ -73,10 +83,5 @@
         <button type="button" class="btn btn-success"><%= @fase_veld %></button>
       <% end %>
     </td>
-  <% else %>
-    <td class="index" colspan="2"></td>
-    <td class="index"> 
-        <button type="button" class="btn btn-warning">Backup versie</button>
-    </td>
-  <% end %>
+  <% end %>  
 </tr>
