@@ -119,6 +119,8 @@ function getWerkbonType() {
             }
         });
         
+        $('.calculation').show();
+        
         if (value != "Vloeren") {
             $('.vloeren').hide();
         } else {
@@ -142,7 +144,16 @@ function getWerkbonType() {
         } else {
             $('.raam').show();
         }
-    
+        
+        if (value != 'Behang') {
+            $('.behang').hide();
+        } else {
+            $('.behang').show();
+        }
+        
+        if (value == 'Karpetten' || value == 'Meubels en lampen') {
+            $('.calculation').hide();
+        }
         update_subtotal();
     });
     
@@ -158,6 +169,14 @@ function getWerkbonTypeAfter() {
     $('.vouwgordijnen').hide();
 
     $('.raam').hide();
+    
+    $('.behang').hide();
+    
+    $('.karpetten').hide();
+
+    $('.meubels_lampen').hide();
+    
+    $('.calculation').show();
 
     switch(value) {
         case 'Vloeren':
@@ -171,6 +190,15 @@ function getWerkbonTypeAfter() {
             break;
         case 'Raamdecoratie':
             $('.raam').show();
+            break;
+        case 'Behang':
+            $('.behang').show();
+            break;
+        case 'Karpetten':
+            $('.calculation').hide();
+            break;
+        case 'Meubels en lampen':
+            $('.calculation').hide();
             break;
     }
 }

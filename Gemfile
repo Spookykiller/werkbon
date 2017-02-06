@@ -16,6 +16,7 @@ gem "cocoon"
 gem "haml"
 
 gem 'jquery-turbolinks'
+gem 'jquery-datatables-rails'
 
 gem 'jquery-ui-rails'
 

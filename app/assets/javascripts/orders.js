@@ -7,7 +7,6 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $( document ).ready(function() {
-    console.log("It works on each visit!")
     selected_values();
     
     $('input').click(function(){

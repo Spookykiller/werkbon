@@ -1,20 +1,10 @@
-<div class="center">
-    <%= form_tag(orders_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Zoek order" %>
-        <%= submit_tag "Zoek", :name => nil %>
-    <% end %>
-</div>
-
-<br>
-<br>
-
-<table border="1" style="width:100%">
+<table border="1" style="width:100%" class="datatable">
     <thead>
         <tr>
-            <th><%= sortable "project_naam", "Projectnaam" %></th>
-            <th><%= sortable "project_nummer", "Projectnummer" %></th>
-            <th><%= sortable "inmeetdatum", "Inmeetdatum" %></th>
-            <th><%= sortable "contactpersoon", "Contactpersoon" %></th>
+            <th>Projectnaam</th>
+            <th>Projectnummer</th>
+            <th>Inmeetdatum</th>
+            <th>Contactpersoon</th>
             <th>Nieuwe werkbon</th>
             <th>Acties</th>
         </tr>

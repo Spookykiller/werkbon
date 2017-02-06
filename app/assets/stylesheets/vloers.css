@@ -1,3 +1,7 @@
+.calc {
+    min-width: 120px;
+}
+
 .leverancier {
     color: #a20000;
     font-size: 14px;
@@ -175,11 +179,12 @@ label.col-xs-12 {
     }
     
     .calculations input {
-        font-size: 10px;
         height: 10px;
     }
     
     .calculations input, .calculations select {
+        text-align: center;
+        font-size: 10px;
         width: 100%;
     }
 
@@ -196,9 +201,31 @@ label.col-xs-12 {
     }
     
     td label {
+        margin-left: 0px;
         font-size: 10px;
     }
     
+    .small {
+        min-width: 30px;
+    }
+    
+    .inbetween {
+        min-width: 40px;
+    }
+    
+    .medium {
+        min-width: 60px;
+    }
+    
+    .big {
+       min-width: 90px; 
+    }
+    
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
 }
 
 @page{

@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require jquery-ui
+ *= require dataTables/jquery.dataTables
  *= require_self
  *= require toastr
  */
@@ -295,3 +296,16 @@ table {
 li.account {
     color: #0063a2;
 }
+
+.dataTables_length {
+    padding-bottom: 15px;
+}
+
+table.dataTable.no-footer {
+    border: none;
+}
+
+table.dataTable th.focus,table.dataTable td.focus{
+    outline:3px solid #3366FF;outline-offset:-1px
+}
+

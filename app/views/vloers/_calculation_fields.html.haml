@@ -1,14 +1,14 @@
 %tr.row.nested-fields  
   .leverancier_loop
     .field
-      %td.raam.vouwgordijnen.gordijnen.vloeren
+      %td.raam.vouwgordijnen.gordijnen.vloeren.behang
         = f.text_field :ruimte, :class => "calculation_ruimte"
         = f.hidden_field :werkbon
-      %td.raam.vouwgordijnen.gordijnen.vloeren
+      %td.raam.vouwgordijnen.gordijnen.vloeren.behang
         = f.number_field :aantal, :class => "calculation_number", :value => (number_with_precision(f.object.aantal, :precision => 0))
-      %td.raam.vouwgordijnen.gordijnen.vloeren
+      %td.raam.vouwgordijnen.gordijnen.vloeren.behang
         = f.number_field :breedte, step: 1, :class => "calculation_breedte", :value => (number_with_precision(f.object.breedte, :precision => 0))
-      %td.raam.vouwgordijnen.gordijnen.vloeren
+      %td.raam.vouwgordijnen.gordijnen.vloeren.behang
         = f.number_field :hoogte, :class => "calculation_ruimte", :value => (number_with_precision(f.object.hoogte, :precision => 0))
       %td.vloeren
         = f.number_field :snijmaat, :value => (number_with_precision(f.object.snijmaat, :precision => 0))
@@ -62,13 +62,17 @@
         = f.select :koof, ["IDD", "ODD", "retour links", "retour rechts", "rondom"], :include_blank => true
       %td.raam
         = f.select :zijgeleiding, ["ja", "nee"], :include_blank => true
-      %td.raam
+      %td.behang
+        = f.select :ondergrond, ["gestuced", "beton", "gips", "hout"], :include_blank => true
+      %td.behang
+        = f.select :voorstrijken, ["ja", "nee"], :include_blank => true
+      %td.raam.behang
         = f.select :contra_rolend, ["ja", "nee"], :include_blank => true
-      %td.raam
+      %td.raam.behang
         = f.select :raam_montage, ["wand", "plafond", "dagkant", "IDD", "ODD"], :include_blank => true
-      %td.vouwgordijnen.gordijnen.raam
+      %td.vouwgordijnen.gordijnen.raam.behang
         = f.select :plaatsing, ["beton", "steen", "gips", "hout", "metaal"], :include_blank => true
-      %td.vouwgordijnen.raam
+      %td.vouwgordijnen.raam.behang
         = f.number_field :montage_hoogte, :value => (number_with_precision(f.object.montage_hoogte, :precision => 0))
       %td.raam
         = f.number_field :raam_prijs, :step => '0.01'
