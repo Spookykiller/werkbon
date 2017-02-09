@@ -20,7 +20,7 @@ class VloersController < ApplicationController
     def create
         @vloer = Vloer.new vloer_params
         # zet de orderstatus van de nieuwe werkbon gelijk aan de orderstatus id
-        @vloer.order_states_id = @order_state.id
+        @vloer.order_state_id = @order_state.id
         # status van de werkbon op offerte initialiseren
         @vloer.status = 0
         
@@ -56,9 +56,9 @@ class VloersController < ApplicationController
         # de nieuwe werkbon heeft een status die 1 hoger is dan de vorige
         new_vloer.status = (@vloer.status + 1)
         if new_order.blank?
-            new_vloer.order_states_id = @vloer.order_states_id
+            new_vloer.order_state_id = @vloer.order_state_id
         else
-            new_vloer.order_states_id = new_order.id
+            new_vloer.order_state_id = new_order.id
         end
         
         if new_vloer.save
@@ -85,22 +85,42 @@ class VloersController < ApplicationController
     end
     
     def print
-        if((@vloer.status % 2) === 0)
-            @items = @vloer.items.order("created_at ASC")
-            @calculations = @vloer.calculations.order("created_at ASC")
+        if params[:direction] == "reverse"
+            if((@vloer.status % 2) === 0)
+                @items = @vloer.items.order("created_at DESC")
+                @calculations = @vloer.calculations.order("created_at DESC")        
+            else 
+                @items = @vloer.items.order("created_at ASC")
+                @calculations = @vloer.calculations.order("created_at ASC")
+           end
         else 
-            @items = @vloer.items.order("created_at DESC")
-            @calculations = @vloer.calculations.order("created_at DESC")        
+            if((@vloer.status % 2) === 0)
+                @items = @vloer.items.order("created_at ASC")
+                @calculations = @vloer.calculations.order("created_at ASC")
+            else 
+                @items = @vloer.items.order("created_at DESC")
+                @calculations = @vloer.calculations.order("created_at DESC")        
+            end
         end
     end
     
     def edit
-        if((@vloer.status % 2) === 0)
-            @items = @vloer.items.order("created_at ASC")
-            @calculations = @vloer.calculations.order("created_at ASC")
+        if params[:direction] == "reverse"
+            if((@vloer.status % 2) === 0)
+                @items = @vloer.items.order("created_at DESC")
+                @calculations = @vloer.calculations.order("created_at DESC")        
+            else 
+                @items = @vloer.items.order("created_at ASC")
+                @calculations = @vloer.calculations.order("created_at ASC")
+           end
         else 
-            @items = @vloer.items.order("created_at DESC")
-            @calculations = @vloer.calculations.order("created_at DESC")        
+            if((@vloer.status % 2) === 0)
+                @items = @vloer.items.order("created_at ASC")
+                @calculations = @vloer.calculations.order("created_at ASC")
+            else 
+                @items = @vloer.items.order("created_at DESC")
+                @calculations = @vloer.calculations.order("created_at DESC")        
+            end
         end
     end
     

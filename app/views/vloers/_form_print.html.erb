@@ -86,6 +86,9 @@
         <input type="radio" name="printstyle" value="wit">Wit
         <input type="radio" name="printstyle" value="geel">Geel<br>
         <%= link_to "Print", '#', onclick: "printpage()" %>
+        <br>
+        <br>
+        <%= link_to 'Werkbon omdraaien', {:direction => "reverse"}, :class => 'annuleren' %>
     </div>
     
 <% end %>

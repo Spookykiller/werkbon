@@ -7,6 +7,19 @@ $(document).ajaxSend(function(event, request, settings) {
 });
 
 $( document ).ready(function() {
+    
+    // filter options for orders
+    $("div.filter_options").click(function () {
+        $(this).find('ul').fadeToggle( "slow", "linear" );
+    });
+    
+    // active link binding class
+    $("[href]").each(function() {
+        if (this.href == window.location.href) {
+            $(this).addClass("active");
+        }
+    });
+
     selected_values();
     
     $('input').click(function(){
@@ -79,25 +92,6 @@ $( document ).ready(function() {
         console.log('Oeps, er is iets mis gegaan met het ophalen van projecten!'); // or whatever
     });
     
-    // Leverancier
-    $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/leverancier_AppConnectorGet.php", function( data ) {
-        
-        var arr = data;
-        var lang = [];
-        var obj = JSON.parse(arr);
-        $.each(obj, function() {
-            lang.push(this['CreditorName'])
-        });
-
-        $(".leverancier_input").autocomplete({
-            source: lang
-        });
-                
-    }).fail(function() {
-        console.log('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
-    });
-    
-    
     // Naam klant
     $.post( "http://www.de4gees.nl/AFAS-ProfitClass-PHP-master/sample/debtor2_AppConnectorGet.php", function( data2 ) {
         var arr = data2;
@@ -116,7 +110,7 @@ $( document ).ready(function() {
         });
                 
     }).fail(function() {
-        alert('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
+        console.log('Oeps, er is iets mis gegaan met het ophalen van leveranciers!'); // or whatever
     });
 
 });

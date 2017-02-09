@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125093002) do
+ActiveRecord::Schema.define(version: 20170207085631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,11 +213,11 @@ ActiveRecord::Schema.define(version: 20170125093002) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "backup"
-    t.integer  "order_states_id"
+    t.integer  "order_state_id"
     t.string   "name"
   end
 
-  add_index "vloers", ["order_states_id"], name: "index_vloers_on_order_states_id", using: :btree
+  add_index "vloers", ["order_state_id"], name: "index_vloers_on_order_state_id", using: :btree
 
   add_foreign_key "calculations", "vloers"
   add_foreign_key "dropdowns", "regels"

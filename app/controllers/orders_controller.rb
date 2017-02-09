@@ -1,16 +1,18 @@
 class OrdersController < ApplicationController
     before_action :authenticate_user!
     layout 'werkbonnen'
-    before_action :find_order, only: [:print, :duplicate, :edit, :update, :destroy]
-    helper_method :sort_column, :sort_direction
+    before_action :find_order, only: [:print, :edit, :update, :destroy]
+    helper_method :filtered_orders
 
     def index
-        if params[:search]
-            @orders = Order.search(params[:search]).order("created_at DESC")
-        else
-            @orders = Order.order(sort_column + " " + sort_direction)
+        @orders = filtered_orders
+        
+        # if params[:search]
+        #     @orders = Order.search(params[:search]).order("created_at DESC")
+        # else
+        #     @orders = Order.order(sort_column + " " + sort_direction)
             # @orders = Order.joins(:order_states).group("orders.id").having('count(order_id) > 0')
-        end
+        # end
     end
     
     def new
@@ -29,18 +31,6 @@ class OrdersController < ApplicationController
         else
             render 'new'
             flash[:notice] = "Oh nee! De order is niet opgeslagen."
-        end
-    end
-    
-    def duplicate
-        new_record = @order.dup
-        
-        if new_record.save 
-            flash[:notice] = "De order is gedupliceerd!"
-            redirect_to action: "index"
-        else
-            redirect_to action: "index"
-            flash[:notice] = "Oh nee! De order is niet gedupliceerd."
         end
     end
     
@@ -75,12 +65,50 @@ class OrdersController < ApplicationController
         @order = Order.find(params[:id]) 
     end
     
-    def sort_column
-        Order.column_names.include?(params[:sort]) ? params[:sort] : "inmeetdatum"
+    def filtered_orders
+        # Order.joins(:order_states).where(:order_states => { :status => 2 })
+        # Order.joins(:vloers).group(:id).where(:vloers => { :status => 1, :backup => nil })
+        # Order.all
+        
+        # when filter is on all_werkbonnen all werkbonnen get showed up
+        if params[:sort] == "all_werkbonnen"
+            Order.all.order('inmeetdatum ASC')
+        elsif params[:sort] == "backup_werkbonnen"
+            if current_user.role == 0
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => true })
+            elsif current_user.role == 1
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => true })
+            elsif current_user.role == 2
+                order_query(1, true)
+            elsif current_user.role == 3
+                order_query(3, true)
+            elsif current_user.role == 4
+                order_query(4, true)
+            elsif current_user.role == 5
+                order_query(5, true)
+            end
+        elsif params[:sort] == "empty_werkbonnen"
+            Order.includes(:vloers).where( :vloers => { :id => nil } )
+        else 
+            if current_user.role == 0
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
+            elsif current_user.role == 1
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
+            elsif current_user.role == 2
+                order_query(1, nil)
+            elsif current_user.role == 3
+                order_query(3, nil)
+            elsif current_user.role == 4
+                order_query(4, nil)
+            elsif current_user.role == 5
+                order_query(5, nil)
+            end
+        end
     end
-  
-    def sort_direction
-        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    
+    def order_query(status, backup)
+        # Query for finding all orders where werkbonnen have a specific status and backup status
+        Order.joins(:vloers).group(:id).where(:vloers => { :status => status, :backup => backup })
     end
 
 end

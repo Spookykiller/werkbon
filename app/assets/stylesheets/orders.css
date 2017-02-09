@@ -1,0 +1,28 @@
+.filter {
+    
+}
+
+.filter.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.filter:hover {
+    text-decoration: underline;
+}
+
+a.filter {
+    color: #000000;
+}
+
+.filter_options {
+    margin-bottom: 30px;
+}
+
+.filter_options a {
+    display: inline-block;
+}
+
+.filter_options ul {
+    display: none;
+}

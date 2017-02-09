@@ -49,6 +49,9 @@
     <div class="center">
         <%= f.submit 'Opslaan', :class => 'new_werkbon' %>
         <br>
+        <%= link_to 'Werkbon omdraaien', {:direction => "reverse"}, :class => 'annuleren' %>
+        <br>
+        <br>
         <%= link_to 'Annuleren', :back, :class => 'annuleren' %>
     </div>
     

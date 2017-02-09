@@ -8,32 +8,32 @@ class OrderStatesController < ApplicationController
         @order_states = OrderState.where(:order_id => @order).order("status ASC")
 
         if current_user.role == 0
-            @offerte_werkbonnen = Vloer.where(:order_states_id => @order.order_states.first)
-            @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second)
-            @definitieve_werkbonnen = Vloer.where(:order_states_id => @order.order_states.last)
+            @offerte_werkbonnen = Vloer.where(:order_state_id => @order.order_states.first)
+            @meting_werkbonnen = Vloer.where(:order_state_id => @order.order_states.second)
+            @definitieve_werkbonnen = Vloer.where(:order_state_id => @order.order_states.last)
             @fase_veld = "Volgende fase"
         elsif current_user.role == 1
-            @offerte_werkbonnen = Vloer.where(:order_states_id => @order.order_states.first)
-            @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second)
+            @offerte_werkbonnen = Vloer.where(:order_state_id => @order.order_states.first)
+            @meting_werkbonnen = Vloer.where(:order_state_id => @order.order_states.second)
             @fase_veld = "Klaar voor meting/akkoord"
         elsif current_user.role == 2
-            @meting_werkbonnen = Vloer.where(:order_states_id => @order.order_states.second, :status => 1)
+            @meting_werkbonnen = Vloer.where(:order_state_id => @order.order_states.second, :status => 1)
             @fase_veld = "Ingemeten"
         elsif current_user.role == 3
-            @definitieve_werkbonnen = Vloer.where(:order_states_id => @order.order_states.last, :status => 3)
+            @definitieve_werkbonnen = Vloer.where(:order_state_id => @order.order_states.last, :status => 3)
             @fase_veld = "Gereed voor bestellen"
         elsif current_user.role == 4
             @fase_veld = "Besteld"
-            @definitieve_werkbonnen = Vloer.where(:order_states_id => @order.order_states.last, :status => 4)
+            @definitieve_werkbonnen = Vloer.where(:order_state_id => @order.order_states.last, :status => 4)
         elsif current_user.role == 5
             @fase_veld = "Eindstaat bereikt"
-            @definitieve_werkbonnen = Vloer.where(:order_states_id => @order.order_states.last, :status => 5)
+            @definitieve_werkbonnen = Vloer.where(:order_state_id => @order.order_states.last, :status => 5)
         end
         
     end
     
     def show
-        @vloers = Vloer.where(:order_states_id => @order_state)
+        @vloers = Vloer.where(:order_state_id => @order_state)
     end
     
     private

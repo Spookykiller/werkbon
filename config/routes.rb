@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   
   resources :orders, except: :show do
     member do
-      get 'duplicate'
       get 'print'
     end
     resources :order_states, only: [:index, :show] do 
