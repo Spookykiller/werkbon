@@ -71,8 +71,20 @@ class OrdersController < ApplicationController
         # Order.all
         
         # when filter is on all_werkbonnen all werkbonnen get showed up
-        if params[:sort] == "all_werkbonnen"
-            Order.all.order('inmeetdatum ASC')
+        if params[:sort] == "yet_to_processed_werkbonnen"
+            if current_user.role == 0
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
+            elsif current_user.role == 1
+                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
+            elsif current_user.role == 2
+                order_query(1, nil)
+            elsif current_user.role == 3
+                order_query(3, nil)
+            elsif current_user.role == 4
+                order_query(4, nil)
+            elsif current_user.role == 5
+                order_query(5, nil)
+            end
         elsif params[:sort] == "backup_werkbonnen"
             if current_user.role == 0
                 Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => true })
@@ -90,19 +102,7 @@ class OrdersController < ApplicationController
         elsif params[:sort] == "empty_werkbonnen"
             Order.includes(:vloers).where( :vloers => { :id => nil } )
         else 
-            if current_user.role == 0
-                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
-            elsif current_user.role == 1
-                Order.joins(:vloers).group(:id).where(:vloers => { :status => (0 || 2), :backup => nil })
-            elsif current_user.role == 2
-                order_query(1, nil)
-            elsif current_user.role == 3
-                order_query(3, nil)
-            elsif current_user.role == 4
-                order_query(4, nil)
-            elsif current_user.role == 5
-                order_query(5, nil)
-            end
+            Order.all.order('inmeetdatum ASC')
         end
     end
     
