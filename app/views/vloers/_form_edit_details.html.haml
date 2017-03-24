@@ -9,7 +9,7 @@
       %th.numbers_width Totaal arbeid
   %tbody
     #tasks
-      = f.fields_for :items, @items do |item|
+      = f.fields_for :items, f.object.items.order(:created_at) do |item|
         - if item.object.werkbon_type == @vloer.werkbon_type
           = render 'leverancier_edit_details', f: item
           = render 'leverancier_regel_edit_details', f: item

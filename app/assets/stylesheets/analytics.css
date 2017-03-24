@@ -1,0 +1,19 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.analytics {
+    margin-top: -40px;
+}
+
+.chart {
+    width: 100%;
+    padding: 60px 50px;
+    text-align: center;
+    border-bottom: 2px dashed #adadad;
+    box-sizing: border-box;
+}
+
+.chart .title {
+    padding-bottom: 60px;
+}

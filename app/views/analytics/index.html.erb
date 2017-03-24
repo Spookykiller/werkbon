@@ -1,0 +1,71 @@
+<div class="analytics">
+    <div class="chart">
+        <h2>Gemiddelde totaalprijs van alle orders: <%= number_to_currency(Order.joins(:vloers).average('vloers.totale_prijs')) %></h2>
+        <h2>Gemiddeld aantal werkbonnen van alle orders: </h2>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Werkbon verdeling per type</h2>
+            <p>Gebaseerd op de werkbontype die de werkbonnen toegewezen hebben gekregen.</p>
+        </div>
+    
+        <%= pie_chart Vloer.group(:werkbon_type).count %>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Order aanmaak schema per maand</h2>
+            <p>Gebaseerd op de aanmaakdata van alle orders.</p>
+        </div>
+    
+        <%= line_chart Order.group_by_month(:created_at).count %>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Werkbon aanmaak schema per maand</h2>
+            <p>Gebaseerd op de aanmaakdata van alle werkbonnen.</p>
+        </div>
+        
+        <%= line_chart Vloer.group_by_month(:created_at).count %>
+    </div>
+    
+    <div class="chart">
+        
+        <div class="title">
+            <h2>Orderverantwoordelijkheid per persoon</h2>
+            <p>Gebaseerd op hoe vaak de werknemer als contactpersoon is toegewezen aan een order.</p>
+        </div>
+        
+        <%= column_chart Order.group(:contactpersoon).count %>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Contactpersoon van de maand</h2>
+            <p>Gebaseerd op hoe vaak de werknemer als contactpersoon is toegewezen aan een order die deze maand gemaakt is.</p>
+        </div>
+        <%= pie_chart Order.group(:contactpersoon).where("EXTRACT(MONTH FROM created_at) = ?", Time.zone.now.month).count %>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Totale prijs per order</h2>
+            <p>Gebaseerd op de som van alle werkbonnen binnen een order.</p>
+        </div>
+
+        <%= column_chart Order.joins(:vloers).group('orders.project_naam').sum('vloers.totale_prijs') %>
+    </div>
+    
+    <div class="chart">
+        <div class="title">
+            <h2>Hoeveelheid werkbonnen per order</h2>
+            <p>Gebaseerd op het aantal werkbonnen per order.</p>
+        </div>
+        
+        <%= column_chart Order.joins(:vloers).group('orders.project_naam').count('vloers.id') %>
+    </div>
+
+    
+</div>

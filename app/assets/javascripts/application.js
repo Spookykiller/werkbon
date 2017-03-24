@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
+//= require Chart.bundle
+//= require chartkick
 //= require jquery-ui
 //= require cocoon
 //= require toastr

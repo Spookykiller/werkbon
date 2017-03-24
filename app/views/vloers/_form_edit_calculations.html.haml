@@ -31,7 +31,7 @@
       %th.actions verwijder
   %tbody.calculations
     #tasks
-      = f.fields_for :calculations, @calculations do |calculation|
+      = f.fields_for :calculations, f.object.calculations.order(:created_at) do |calculation|
         = render 'calculation_fields', f: calculation
 .links
   = link_to_add_association 'Voeg berekening toe', f, :calculations,

@@ -25,6 +25,10 @@ gem 'devise'
 
 # Filter
 gem 'filterrific'
+gem 'groupdate'
+
+# Charts
+gem 'chartkick'
 
 # Notifications
 gem 'toastr-rails'

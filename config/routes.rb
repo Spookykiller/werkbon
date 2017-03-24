@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :articles, except: :show
   get 'vloers/find_pakbon'
   get 'regels/new_blanko'
-
+  
+  resources :analytics, only: [:index, :show]
+  
   root 'orders#index'
 end

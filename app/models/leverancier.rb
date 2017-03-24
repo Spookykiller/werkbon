@@ -5,4 +5,5 @@ class Leverancier < ActiveRecord::Base
     
     validates :leverancier_label, presence: true, uniqueness: true
     validates :leverancier_werkbon, presence: true
+    validates :sequence_id, presence: true
 end

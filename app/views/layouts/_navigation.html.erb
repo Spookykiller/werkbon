@@ -29,10 +29,13 @@
           <li>Uitloggen</li>
         <% end %>
         <%= link_to edit_user_registration_path do %>
-          <li>Gebruiker instellingen</li>
+          <li>Instellingen</li>
         <% end %>
 
         <% if current_user.role == 0 %>
+          <%= link_to analytics_path do %>
+            <li>Analytics</li>
+          <% end %>
           <%= link_to articles_path do %>
             <li>Artikelen</li>
           <% end %>

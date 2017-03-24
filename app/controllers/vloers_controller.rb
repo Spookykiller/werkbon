@@ -62,13 +62,13 @@ class VloersController < ApplicationController
         end
         
         if new_vloer.save
-            # maak alle item attributen van de relaties van de werkbon aan
-            @vloer.items.each do |item|
+            # maak alle item attributen van de relaties van de werkbon aan op order van id
+            @vloer.items.order("id ASC").each do |item|
                 new_vloer.items.create(item.dup.attributes)
             end
             
             # maak alle calculatie attributen van de relaties van de werkbon aan
-            @vloer.calculations.each do |calculation|
+            @vloer.calculations.order("id ASC").each do |calculation|
                 new_vloer.calculations.create(calculation.dup.attributes)
             end
             flash[:notice] = "Werkbon is naar volgende fase"
@@ -85,43 +85,9 @@ class VloersController < ApplicationController
     end
     
     def print
-        if params[:direction] == "reverse"
-            if((@vloer.status % 2) === 0)
-                @items = @vloer.items.order("created_at DESC")
-                @calculations = @vloer.calculations.order("created_at DESC")        
-            else 
-                @items = @vloer.items.order("created_at ASC")
-                @calculations = @vloer.calculations.order("created_at ASC")
-           end
-        else 
-            if((@vloer.status % 2) === 0)
-                @items = @vloer.items.order("created_at ASC")
-                @calculations = @vloer.calculations.order("created_at ASC")
-            else 
-                @items = @vloer.items.order("created_at DESC")
-                @calculations = @vloer.calculations.order("created_at DESC")        
-            end
-        end
     end
     
     def edit
-        if params[:direction] == "reverse"
-            if((@vloer.status % 2) === 0)
-                @items = @vloer.items.order("created_at DESC")
-                @calculations = @vloer.calculations.order("created_at DESC")        
-            else 
-                @items = @vloer.items.order("created_at ASC")
-                @calculations = @vloer.calculations.order("created_at ASC")
-           end
-        else 
-            if((@vloer.status % 2) === 0)
-                @items = @vloer.items.order("created_at ASC")
-                @calculations = @vloer.calculations.order("created_at ASC")
-            else 
-                @items = @vloer.items.order("created_at DESC")
-                @calculations = @vloer.calculations.order("created_at DESC")        
-            end
-        end
     end
     
     def update
