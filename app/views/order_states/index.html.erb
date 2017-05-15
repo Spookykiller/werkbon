@@ -7,7 +7,7 @@
 
 <% @order_states.each do |order_state| %>
 
-    <% if order_state.status == 0 && (current_user.role == 0 || current_user.role == 1) %>
+    <% if order_state.status == 0 %>
         <h2>Offerte werkbonnen</h2>
         <br>
         <table border="1" style="width:100%">
@@ -29,7 +29,7 @@
         </table>
         <br>
         
-    <% elsif order_state.status == 1 && (current_user.role == 0 || current_user.role == 1 || current_user.role == 2)%>
+    <% elsif order_state.status == 1 %>
         
         <h2>Meting werkbonnen</h2>
         <br>
@@ -52,7 +52,7 @@
         </table>
         <br>
         
-    <% elsif order_state.status == 2 && (current_user.role == 0 || current_user.role == 3 || current_user.role == 4 || current_user.role == 5)%>    
+    <% elsif order_state.status == 2 %>    
         
         <h2>Definitieve werkbonnen</h2>
         <br>
@@ -78,10 +78,8 @@
         
 <% end %>
 
-<% if current_user.role == 0 || current_user.role == 1 %>
-    <div>
-        <%= link_to new_order_order_state_vloer_path(@order, @order_states.first) do %>
-            <button class="new_werkbon">Nieuwe offerte +</button>
-        <% end %>
-    </div>
-<% end %>    
+<div>
+    <%= link_to new_order_order_state_vloer_path(@order, @order_states.first) do %>
+        <button class="new_werkbon">Nieuwe offerte +</button>
+    <% end %>
+</div>
